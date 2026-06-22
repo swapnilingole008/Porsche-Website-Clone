@@ -144,7 +144,7 @@ Media queries and Bootstrap's responsive grid system ensure a smooth experience 
 
 ---
 
-## 🚀 Future Improvements
+## Future Improvements
 
 * Backend Integration
 * User Authentication
@@ -157,7 +157,7 @@ Media queries and Bootstrap's responsive grid system ensure a smooth experience 
 ---
 
 
-## 👨‍💻 Author
+## Author
 
 Swapnil Ingole
 
