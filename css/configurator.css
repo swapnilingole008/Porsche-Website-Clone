@@ -1,0 +1,793 @@
+/* RESET & BASE */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #fff;
+    color: #000;
+    font-size: 14px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* LAYER 1 — STICKY NAVBAR  (Menu | PORSCHE | bookmark/flag)
+   Identical to the real site top bar shown in screenshots */
+.cfg-navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 60px;
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 2000;
+}
+.cfg-navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #000;
+    background: none;
+    border: none;
+}
+.cfg-navbar-left i { font-size: 14px; }
+.cfg-navbar-logo {
+    /* Porsche wordmark SVG - exact same as index.html */
+    display: flex;
+    align-items: center;
+}
+.cfg-navbar-logo svg {
+    height: 20px;
+    width: auto;
+    fill: #000;
+}
+.cfg-navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 17px;
+    color: #000;
+    cursor: pointer;
+}
+.cfg-navbar-right i { opacity: 0.85; transition: opacity 0.2s; }
+.cfg-navbar-right i:hover { opacity: 1; }
+
+/* LAYER 2 — SUB-BAR  (← Create Porsche Code | Price | Btns)
+   Sits just below the navbar */
+.cfg-subbar {
+    position: fixed;
+    top: 60px; left: 0; right: 0;
+    height: 64px;
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 1999;
+    gap: 16px;
+}
+.cfg-subbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}
+.cfg-back-btn {
+    background: none; border: none;
+    font-size: 18px; cursor: pointer;
+    color: #000; padding: 4px;
+    display: flex; align-items: center;
+    transition: opacity 0.2s;
+    line-height: 1;
+}
+.cfg-back-btn:hover { opacity: 0.55; }
+.cfg-create-code-btn {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 13px; color: #000; cursor: pointer;
+    background: none; border: none;
+    transition: opacity 0.2s;
+    font-family: inherit;
+}
+.cfg-create-code-btn:hover { opacity: 0.6; }
+.cfg-create-code-btn i { font-size: 14px; }
+
+.cfg-subbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.cfg-price-wrap { text-align: right; }
+.cfg-price-main {
+    font-size: 17px;
+    font-weight: 600;
+    color: #000;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+.cfg-price-sub {
+    font-size: 11px;
+    color: #888;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+.cfg-btn-summary {
+    background: #f0f0f0;
+    border: none;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+    transition: background 0.2s;
+}
+.cfg-btn-summary:hover { background: #e2e2e2; }
+.cfg-btn-enquire {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+    transition: background 0.2s;
+}
+.cfg-btn-enquire:hover { background: #222; }
+.cfg-subbar-search-btn {
+    background: none; border: none;
+    font-size: 18px; cursor: pointer;
+    color: #000; padding: 4px;
+    display: none; /* shown on mobile */
+}
+
+/* MAIN LAYOUT  — two columns
+   Left: car viewer (flex:1)
+   Right: panel (420px fixed) */
+.cfg-body {
+    display: flex;
+    height: 100vh;
+    padding-top: 124px; /* 60 navbar + 64 subbar */
+}
+
+/* LEFT COLUMN — Car Viewer */
+.cfg-viewer {
+    flex: 1;
+    position: relative;
+    background: #efefef;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Main image area */
+.cfg-image-area {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+.cfg-car-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: opacity 0.38s ease;
+}
+.cfg-car-img.fading { opacity: 0; }
+
+/* Expand button — top-right of image */
+.cfg-expand-btn {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; cursor: pointer;
+    transition: box-shadow 0.2s;
+    z-index: 10;
+}
+.cfg-expand-btn:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
+
+/* Bottom toolbar — 3 circle btns + 360 btn */
+.cfg-viewer-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px 12px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    flex-shrink: 0;
+}
+.cfg-tool-btns { display: flex; gap: 8px; }
+.cfg-tool-btn {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #ddd;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: all 0.2s;
+    color: #333;
+}
+.cfg-tool-btn:hover {
+    background: #f5f5f5;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.cfg-360-btn {
+    background: rgba(255,255,255,0.96);
+    border: 1px solid #ccc;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 24px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+.cfg-360-btn:hover { background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+
+/* Thumbnail strip */
+.cfg-thumbstrip {
+    display: flex;
+    gap: 5px;
+    padding: 8px 14px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    overflow-x: auto;
+    scrollbar-width: none;
+    align-items: center;
+    flex-shrink: 0;
+}
+.cfg-thumbstrip::-webkit-scrollbar { display: none; }
+
+.cfg-thumb-nav {
+    width: 32px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    font-size: 13px;
+    color: #555;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #fff;
+    transition: background 0.2s;
+}
+.cfg-thumb-nav:hover { background: #f5f5f5; }
+
+.cfg-thumb {
+    width: 78px; height: 48px;
+    border-radius: 3px;
+    overflow: hidden;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.18s;
+}
+.cfg-thumb.active { border-color: #000; }
+.cfg-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* RIGHT COLUMN — Options Panel */
+.cfg-panel {
+    width: 440px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #e0e0e0;
+    background: #fff;
+    overflow: hidden;
+}
+
+/* Panel header — model title + search */
+.cfg-panel-header {
+    padding: 20px 22px 14px;
+    flex-shrink: 0;
+    background: #fff;
+}
+.cfg-model-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+.cfg-model-title-row h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+}
+.cfg-year-badge {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #444;
+    background: #ebebeb;
+    border-radius: 20px;
+    padding: 3px 10px;
+}
+.cfg-tech-link {
+    font-size: 12.5px;
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 14px;
+    display: block;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    text-align: left;
+}
+.cfg-search-row {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 9px 13px;
+    background: #fff;
+}
+.cfg-search-row i { color: #aaa; font-size: 13px; }
+.cfg-search-row input {
+    border: none; outline: none;
+    font-size: 13px; color: #000;
+    flex: 1; background: transparent;
+    font-family: inherit;
+}
+.cfg-search-row input::placeholder { color: #aaa; }
+
+/* Scrollable options */
+.cfg-options-scroll {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #fff;
+}
+.cfg-options-scroll::-webkit-scrollbar { width: 4px; }
+.cfg-options-scroll::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+/* COLLAPSIBLE SECTIONS
+   Each section = white card + grey divider */
+
+/* Section wrapper — grey background separator between sections */
+.cfg-section-block {
+    border-top: 1px solid #ebebeb;
+}
+.cfg-section-block + .cfg-section-block {
+    border-top: 8px solid #f4f4f4;
+}
+
+/* Section heading row — clickable, has chevron */
+.cfg-section-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 22px;
+    cursor: pointer;
+    user-select: none;
+    background: #fff;
+}
+.cfg-section-head:hover { background: #fafafa; }
+.cfg-section-head i {
+    font-size: 12px;
+    color: #555;
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.cfg-section-head h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+    flex: 1;
+}
+/* Badge on section head (e.g. "1" on Tyres) */
+.cfg-section-badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: #555;
+    background: #ebebeb;
+    border-radius: 50%;
+    width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Section body — shown/hidden */
+.cfg-section-body {
+    padding: 0 22px 22px;
+    background: #fff;
+}
+.cfg-section-body.collapsed { display: none; }
+
+/* SUB-SECTION LABELS */
+.cfg-sub-label {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #000;
+    margin: 18px 0 4px;
+}
+.cfg-sub-label:first-child { margin-top: 4px; }
+
+.cfg-sub-price-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: #555;
+    margin-bottom: 4px;
+}
+.cfg-sub-note {
+    font-size: 12.5px;
+    color: #333;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.cfg-sub-note i { color: #aaa; font-size: 12px; }
+.cfg-std-label {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 12px;
+}
+
+/* COLOUR SWATCHES
+   52×52px rounded squares, border ring when active */
+.cfg-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 4px;
+}
+.cfg-swatch {
+    width: 52px; height: 52px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: transform 0.15s;
+}
+.cfg-swatch:hover { transform: scale(1.06); }
+.cfg-swatch.active {
+    border-color: #000;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+}
+/* Two-tone diagonal split swatch */
+.cfg-swatch.split {
+    background: linear-gradient(135deg, var(--c1) 50%, var(--c2) 50%);
+}
+
+/* WHEEL OPTIONS
+   Circular wheel image + label below */
+.cfg-wheel-size-head {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    margin: 20px 0 4px;
+}
+.cfg-wheel-size-head:first-child { margin-top: 4px; }
+
+.cfg-wheels-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+.cfg-wheel-opt {
+    width: 88px;
+    cursor: pointer;
+    text-align: center;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    padding: 10px 6px 8px;
+    transition: all 0.18s;
+    background: #fff;
+}
+.cfg-wheel-opt:hover { background: #f5f5f5; }
+.cfg-wheel-opt.active {
+    border-color: #000;
+    background: #fafafa;
+}
+.cfg-wheel-img-wrap {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 6px;
+    background: #e0e0e0;
+    display: flex; align-items: center; justify-content: center;
+}
+.cfg-wheel-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+}
+/* SVG wheel placeholder when no image */
+.cfg-wheel-svg {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    margin: 0 auto 6px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.cfg-wheel-opt-name {
+    font-size: 10.5px;
+    color: #555;
+    line-height: 1.35;
+    text-align: center;
+}
+
+/* INTERIOR SWATCHES
+   Slightly larger, rounded square, texture image or colour */
+.cfg-interior-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 4px;
+}
+.cfg-interior-swatch {
+    width: 56px; height: 56px;
+    border-radius: 7px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    transition: transform 0.15s;
+}
+.cfg-interior-swatch:hover { transform: scale(1.06); }
+.cfg-interior-swatch.active {
+    border-color: #000;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+}
+.cfg-interior-swatch img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+}
+/* Paint-to-Sample colourful gradient swatch */
+.cfg-pts-swatch {
+    width: 56px; height: 56px;
+    border-radius: 7px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    background: linear-gradient(
+        135deg,
+        #e74c3c 0%, #e67e22 16.6%, #f1c40f 33.3%,
+        #2ecc71 50%, #3498db 66.6%, #9b59b6 83.3%, #e74c3c 100%
+    );
+    flex-shrink: 0;
+    transition: transform 0.15s;
+}
+.cfg-pts-swatch:hover { transform: scale(1.06); }
+.cfg-pts-swatch.active {
+    border-color: #000;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+}
+
+/* Paint-to-Sample expandable row */
+.cfg-pts-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+.cfg-pts-info { flex: 1; }
+.cfg-pts-brand { font-size: 11px; color: #888; }
+.cfg-pts-name { font-size: 13px; font-weight: 500; color: #000; }
+.cfg-pts-price { font-size: 12px; color: #555; }
+.cfg-pts-chevron { font-size: 12px; color: #888; }
+
+/* COLLAPSED SECTION ROWS
+   (Wheel Colours, Wheel Accessories, Tyres 1) */
+.cfg-collapsed-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 22px;
+    border-top: 1px solid #ebebeb;
+    cursor: pointer;
+    background: #fff;
+    transition: background 0.18s;
+}
+.cfg-collapsed-row:hover { background: #fafafa; }
+.cfg-collapsed-row i { font-size: 12px; color: #555; }
+.cfg-collapsed-row span {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: #000;
+    flex: 1;
+}
+
+/* OPTIONAL PACKAGES */
+.cfg-package {
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    padding: 15px 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.18s;
+}
+.cfg-package:hover { border-color: #aaa; }
+.cfg-package.active { border-color: #000; background: #fafafa; }
+.cfg-pkg-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+.cfg-pkg-name {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 3px;
+}
+.cfg-pkg-price { font-size: 12.5px; color: #555; }
+.cfg-pkg-desc {
+    font-size: 12px;
+    color: #777;
+    margin-top: 8px;
+    line-height: 1.55;
+}
+.cfg-pkg-check {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: #fff;
+    flex-shrink: 0; margin-top: 2px;
+    transition: all 0.18s;
+}
+.cfg-package.active .cfg-pkg-check { background: #000; border-color: #000; }
+
+/* LIGHTBOX / FULLSCREEN */
+.cfg-lightbox {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.93);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+.cfg-lightbox.show { display: flex; }
+.cfg-lightbox img {
+    max-width: 94vw;
+    max-height: 90vh;
+    object-fit: contain;
+}
+.cfg-lightbox-close {
+    position: absolute;
+    top: 18px; right: 22px;
+    font-size: 26px; color: #fff;
+    cursor: pointer; background: none; border: none;
+    opacity: 0.8; transition: opacity 0.2s;
+}
+.cfg-lightbox-close:hover { opacity: 1; }
+
+/* SUMMARY PANEL (slide-in from right) */
+.cfg-summary-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 3000;
+}
+.cfg-summary-overlay.show { display: block; }
+.cfg-summary-drawer {
+    position: absolute;
+    top: 0; right: 0;
+    width: 360px; height: 100%;
+    background: #fff;
+    box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+    overflow-y: auto;
+    padding: 28px 24px;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+}
+.cfg-summary-overlay.show .cfg-summary-drawer {
+    transform: translateX(0);
+}
+.cfg-summary-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cfg-summary-close {
+    background: none; border: none;
+    font-size: 20px; cursor: pointer; color: #555;
+}
+.cfg-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    gap: 12px;
+}
+.cfg-summary-row:last-child { border-bottom: none; }
+.cfg-summary-item { font-size: 13px; color: #444; }
+.cfg-summary-val { font-size: 13px; font-weight: 500; color: #000; text-align: right; }
+.cfg-summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0 0;
+    margin-top: 8px;
+    border-top: 2px solid #000;
+}
+.cfg-summary-total-label { font-size: 15px; font-weight: 700; }
+.cfg-summary-total-val { font-size: 17px; font-weight: 700; }
+.cfg-summary-cta {
+    display: block;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 22px;
+    font-family: inherit;
+}
+.cfg-summary-cta:hover { background: #222; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .cfg-panel { width: 380px; }
+}
+@media (max-width: 900px) {
+    html, body { overflow: auto; }
+    .cfg-body { flex-direction: column; height: auto; padding-top: 124px; }
+    .cfg-viewer { min-height: 55vw; flex: none; }
+    .cfg-panel { width: 100%; border-left: none; border-top: 1px solid #e0e0e0; }
+    .cfg-btn-summary { display: none; }
+    .cfg-subbar-search-btn { display: block; }
+    .cfg-summary-drawer { width: 100%; }
+}
+@media (max-width: 600px) {
+    .cfg-create-code-btn span { display: none; }
+    .cfg-price-main { font-size: 15px; }
+    .cfg-price-sub { display: none; }
+    .cfg-navbar { padding: 0 14px; }
+    .cfg-subbar { padding: 0 14px; height: 56px; }
+    .cfg-body { padding-top: 116px; }
+    .cfg-btn-enquire { padding: 10px 14px; font-size: 12px; }
+    .cfg-swatch { width: 46px; height: 46px; }
+    .cfg-interior-swatch { width: 50px; height: 50px; }
+}
+    

@@ -1,0 +1,149 @@
+/* GLOBAL TRANSITIONS */
+
+.fade-up{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all .8s ease;
+}
+
+.fade-up.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* HERO ANIMATION */
+
+.hero-content h1{
+    animation:heroTitle 1.5s ease;
+}
+
+.hero-content p{
+    animation:heroText 2s ease;
+}
+
+.hero-btn{
+    animation:heroBtn 2.5s ease;
+}
+
+@keyframes heroTitle{
+
+    from{
+        opacity:0;
+        transform:translateY(80px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes heroText{
+
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes heroBtn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MODEL CARD HOVER */
+
+.model-card{
+    transition:.5s;
+}
+
+.model-card:hover{
+    transform:translateY(-10px);
+    box-shadow:
+        0 20px 40px rgba(255,255,255,.08);
+}
+
+.model-card:hover .model-content{
+    padding-bottom:35px;
+}
+
+/* BUTTON GLOW */
+
+.hero-btn:hover,
+.btn-light:hover{
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.4),
+        0 0 40px rgba(255,255,255,.15);
+
+}
+
+/* NAV LINK EFFECT */
+
+.nav-link{
+    transition:.4s;
+}
+
+.nav-link:hover{
+    color:#ffffff;
+}
+
+/* FLOATING ICONS */
+
+.social-icons i{
+    animation:floatIcon 3s infinite ease-in-out;
+}
+
+.social-icons i:nth-child(2){
+    animation-delay:.3s;
+}
+
+.social-icons i:nth-child(3){
+    animation-delay:.6s;
+}
+
+@keyframes floatIcon{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* SECTION APPEAR*/
+
+section{
+    animation:sectionFade 1s ease;
+}
+
+@keyframes sectionFade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+

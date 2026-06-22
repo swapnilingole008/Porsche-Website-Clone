@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porsche | Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="porsche-navbar" id="mainNavbar">
+    <div class="nav-left">
+    <button id="menuBtn">
+        <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/menu-lines.e332216.svg" width="24" height="24" loading="lazy" alt="Menu Icon" class="menu-icon-svg" style="filter: invert(1) !important;">
+        <span>Menu</span>
+    </button>
+</div>
+    <div class="nav-center">
+        <a href="index.html" class="porsche-wordmark">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 4500 300"
+                aria-label="Porsche">
+                <path d="M502 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h434zm6-143v65c0 7.8-4.2 12-12 12H68V66h428c7.8 0 12 4.2 12 12zm228 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h417c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H736zm411-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H742c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h405zm675-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-361v79h-68V0h502c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-428v89h428zm162-81c0-48.1 25.9-74 74-74h492v56h-486c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h422c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-492v-56h486c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-422c-48.1 0-74-25.9-74-74V74zm661 0c0-48.1 25.9-74 74-74h480v66h-474c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h474v66h-480c-48.1 0-74-25.9-74-74V74zM3817 0v300h-68V183h-407v117h-68V0h68v117h407V0h68zm156 56v66h527v56h-527v66h527v56h-595V0h595v56h-527z"/>
+            </svg>
+        </a>
+    </div>  
+    <div class="nav-right">
+    <a href="https://www.porsche.com/countries/" class="nav-icon-link" title="Country / Region Selector">
+        <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/globe.56cc8fc.svg" width="24" height="24" loading="lazy" alt="Country Selector" class="nav-svg-icon">
+    </a>
+    
+    <button class="nav-icon-btn" id="accountMenuBtn" title="Account">
+        <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/user.c18dabe.svg" width="24" height="24" loading="lazy" alt="Account Menu" class="nav-svg-icon">
+    </button>
+</div>
+</header>
+
+<!-- MEGA MENU -->
+<div id="megaMenu" class="mega-menu">
+
+    <!-- LEFT -->
+    <div class="menu-column-left">
+        <button class="close-menu">
+            <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg" alt="Close Menu" style="width: 20px; height: 20px; object-fit: contain; filter: invert(1);">
+        </button>
+        <ul class="menu-links">
+            <li class="active"><span>Models</span></li>
+            <li><span>Electric</span></li>
+            <li><span>Vehicle Purchase</span></li>
+            <li><span>Services</span></li>
+            <li><span>Experience</span></li>
+            <li><a href="contact.html" style="display:flex;justify-content:space-between;align-items:center;width:100%;color:inherit;"><span>Find a Dealer</span></a></li>
+        </ul>
+        <div class="account-item">
+            <div><span>Account</span></div>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="menu-column-center">
+        <div class="vehicle-card" onclick="location.href='models.html'">
+            <h2>718</h2>
+            <img src="https://nav.porsche.com/00BC524/series-assets/all/718@2x.webp" alt="718">
+            <span class="fuel-tag">Gasoline</span>
+        </div>
+        <div class="vehicle-card" onclick="location.href='911.html'">
+            <h2>911</h2>
+            <img src="https://nav.porsche.com/00BC524/series-assets/all/911@2x.webp" alt="911">
+            <span class="fuel-tag">Gasoline</span>
+        </div>
+        <div class="vehicle-card" onclick="location.href='taycan.html'">
+            <h2>Taycan</h2>
+            <img src="https://nav.porsche.com/00BC524/series-assets/all/taycan@2x.webp" alt="Taycan">
+            <span class="fuel-tag">Electric</span>
+        </div>
+        <div class="vehicle-card" onclick="location.href='models.html'">
+            <h2>Panamera</h2>
+            <img src="https://nav.porsche.com/00BC524/series-assets/all/panamera@2x.webp" alt="Panamera">
+            <span class="fuel-tag">Hybrid</span>
+        </div>
+        <div class="vehicle-card" onclick="location.href='macan.html'">
+            <h2>Macan</h2>
+            <img src="https://nav.porsche.com/00BC524/series-assets/all/macan@2x.webp" alt="Macan">
+            <span class="fuel-tag">Electric</span>
+        </div>
+        <div class="vehicle-card" onclick="location.href='cayenne.html'">
+            <h2>Cayenne</h2>
+            <img src="https://nav.porsche.com/00BC524/series-assets/all/cayenne-electric@2x.webp" alt="Cayenne">
+            <span class="fuel-tag">Hybrid</span>
+        </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="menu-column-right">
+        <div class="menu-bg"></div>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
+        <source src="https://videos.porsche.com/id/SonderwunschCW24desktop/hls_fhd-low.m3u8" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+    <h1>Sonderwunsch</h1>
+    <h1>"Tree of Life".</h1>
+
+    <a href="#feature-section" class="hero-btn-custom">
+        Discover more
+    </a>
+</div>
+
+<button class="video-toggle" id="videoToggle" aria-label="Toggle Video Playback">
+    <span class="icon-pause">
+        <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/pause.65f20ae.svg" width="24" height="24" alt="Pause">
+    </span>
+    <span class="icon-play" style="display: none;">
+        <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/play-filled.0fb6689.svg" width="24" height="24" alt="Play">
+    </span>
+</button>
+</section>
+
+<!-- FEATURE CARDS (3 cards — white bg) -->
+<section class="feature-cards-section" id="feature-section">
+    <div class="container">
+        <div class="row g-4">
+
+            <div class="col-lg-4 col-md-6 fade-up">
+                <div class="feature-card" onclick="location.href='macan.html'" style="cursor:pointer;">
+                    <img src="https://a.storyblok.com/f/338913/3840x2880/2d82bee3d2/01-macan-4.jpg/m/900x675/filters:format(webp):quality(80)" alt="Macan Electric">
+                    <div class="feature-overlay">
+                        <h3>Macan 4 Electric.</h3>
+                        <div class="arrow-btn">
+                            <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg" width="24" height="24" loading="lazy" alt="Arrow Right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 fade-up" style="animation-delay:.15s">
+                <div class="feature-card" onclick="location.href='models.html'" style="cursor:pointer;">
+                    <img src="https://a.storyblok.com/f/338913/8179x5453/b840fea55d/cw24_motorsport_le_mans_eventpage.jpg/m/900x675/filters:format(webp):quality(80)" alt="Le Mans">
+                    <div class="feature-overlay">
+                        <h3>24 Hours of Le Mans.</h3>
+                        <div class="arrow-btn">
+                            <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg" width="24" height="24" loading="lazy" alt="Arrow Right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 fade-up" style="animation-delay:.3s">
+                <div class="feature-card" onclick="location.href='cayenne.html'" style="cursor:pointer;">
+                    <img src="https://a.storyblok.com/f/338913/1969x1108/f9aebbb5c6/e4-ww-cayenne-coupe-electric-small-banner.jpg/m/900x675/filters:format(webp):quality(80)" alt="Cayenne Electric">
+                    <div class="feature-overlay">
+                        <h3>The new Cayenne Turbo Coupé Electric.</h3>
+                        <div class="arrow-btn">
+                            <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg" width="24" height="24" loading="lazy" alt="Arrow Right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="feature-note">
+            Macan 4 Electric: Electric energy consumption combined (model range): 20.4 – 17.8 kWh/100 km, CO₂-emissions combined (model range): 0 g/km | Cayenne Turbo Coupé Electric: Electric energy consumption combined (model range): 21.9 – 19.9 kWh/100 km, CO₂-emissions combined (model range): 0 g/km
+        </div>
+    </div>
+</section>
+
+<!-- MODELS SECTION -->
+<section class="models-row-section" id="models">
+    <div class="container-fluid px-0">
+        <div class="container-fluid">
+            <div class="section-header px-5">
+                <h2>Your Porsche journey starts now.</h2>
+            </div>
+        </div>
+
+        <div class="model-row">
+            <div class="model-row-card fade-up" onclick="location.href='911.html'">
+                <div class="card-media-wrapper">
+                    <img src="https://a.storyblok.com/f/338913/1280x1024/b7f3c2d593/911-desktop_5-4.jpg/m/1800x0/filters:format(webp):quality(80)" class="model-card-bg model-image" style="object-position: center; transform: scale(1.01);" alt="911">
+                    <video class="model-video" muted loop playsinline prefetch="auto">
+                        <source src="https://videos.porsche.com/id/911Desktop54Final/hls.m3u8" type="video/mp4">
+                    </video>
+                </div>
+                <div class="model-card-gradient"></div>
+                
+                <div class="model-signature-container">
+                    <img src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg" class="model-signature-svg" alt="911 Signature">
+                </div>
+                
+                <div class="model-tag">Sports Car</div>
+                <div class="model-row-footer">
+                    <div class="model-price">
+                        <h6>Iconic sports car with rear engine: 2 doors, 2+2 seats.</h6>
+                    </div>
+                    <div class="model-explore-btn">
+                        <div class="arrow-btn">
+                            <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg" width="24" height="24" loading="lazy" alt="Arrow Right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="model-row-card fade-up" onclick="location.href='models.html'">
+                <div class="card-media-wrapper">
+                    <img src="https://a.storyblok.com/f/338913/1280x1024/f8ad827507/718-desktop_5-4.jpg/m/2100x0/filters:format(webp):quality(80)" class="model-image" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.01);" alt="Porsche 718">
+                    <video class="model-video" muted loop playsinline prefetch="auto">
+                        <source src="https://videos.porsche.com/id/718Desktop54Final/hls.m3u8" type="video/mp4">
+                    </video>
+                </div>
+                <div class="model-card-gradient"></div>
+                
+                <div class="model-signature-container">
+                    <img src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/718.493a9e3.svg" class="model-signature-svg" alt="718 Signature">
+                </div>
+                
+                <div class="model-tag">Model currently unavailable for order.</div>
+                <div class="model-row-footer">
+                    <div class="model-price">
+                        <h6>Precise mid-engine sports car: 2 doors, 2 seats.</h6>
+                    </div>
+                    <div class="model-explore-btn">
+                        <div class="arrow-btn">
+                            <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg" width="24" height="24" loading="lazy" alt="Arrow Right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="model-row">
+            <div class="model-row-card fade-up" onclick="location.href='taycan.html'">
+                <div class="card-media-wrapper">
+                    <img src="https://a.storyblok.com/f/338913/1280x1024/e178b7a186/taycan-desktop_5-4.jpg/m/1800x0/filters:format(webp):quality(80)" class="model-card-bg model-image" style="object-position: center; transform: scale(1.01);" alt="Porsche Taycan">
+                    <video class="model-video" muted loop playsinline prefetch="auto">
+                        <source src="https://videos.porsche.com/id/taycanDesktop/hls.m3u8" type="video/mp4">
+                    </video>
+                </div>
+                <div class="model-card-gradient"></div>
+                
+                <div class="model-signature-container">
+                    <img src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/taycan.df444c6.svg" class="model-signature-svg" alt="Taycan Signature">
+                </div>
+                
+                <div class="model-tag">Electric</div>
+                <div class="model-row-footer">
+                    <div class="model-price">
+                        <h6>Electric sports car: 4 doors, 4/5 seats.</h6>
+                    </div>
+                    <div class="model-explore-btn">
+                        <div class="arrow-btn">
+                            <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg" width="24" height="24" loading="lazy" alt="Arrow Right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="model-row-card fade-up" onclick="location.href='macan.html'">
+                <div class="card-media-wrapper">
+                    <img src="https://a.storyblok.com/f/338913/1280x1024/3debd00362/macan-desktop_5-4.jpg/m/1800x0/filters:format(webp):quality(80)" class="model-card-bg model-image" style="object-position: center; transform: scale(1.01);" alt="Porsche Macan">
+                    <video class="model-video" muted loop playsinline prefetch="auto">
+                        <source src="https://videos.porsche.com/id/macanDesktop/hls.m3u8" type="video/mp4">
+                    </video>
+                </div>
+                <div class="model-card-gradient"></div>
+                
+                <div class="model-signature-container">
+                    <img src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/macan.a1844f4.svg" class="model-signature-svg" alt="Macan Signature">
+                </div>
+                
+                <div class="model-tag">Electric</div>
+                <div class="model-row-footer">
+                    <div class="model-price">
+                        <h6>Sporty compact SUV: 4 doors, 5 seats.</h6>
+                    </div>
+                    <div class="model-explore-btn">
+                        <div class="arrow-btn">
+                            <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg" width="24" height="24" loading="lazy" alt="Arrow Right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="model-row">
+            <div class="model-row-card fade-up" onclick="location.href='cayenne.html'">
+                <div class="card-media-wrapper">
+                    <img src="https://a.storyblok.com/f/338913/1280x1024/7c9b828a7a/denver-range-fallback-desktop-var2.jpg/m/1800x0/filters:format(webp):quality(80)" class="model-card-bg model-image" style="object-position: center; transform: scale(1.01);" alt="Porsche Cayenne">
+                    <video class="model-video" muted loop playsinline prefetch="auto">
+                        <source src="https://videos.porsche.com/id/denvercarrangedesktop/hls.m3u8" type="video/mp4">
+                    </video>
+                </div>
+                <div class="model-card-gradient"></div>
+                
+                <div class="model-signature-container">
+                    <img src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/cayenne.2556201.svg" class="model-signature-svg" alt="Cayenne Signature">
+                </div>
+                
+                <div class="model-tag">Hybrid</div>
+                <div class="model-row-footer">
+                    <div class="model-price">
+                        <h6>Versatile SUV: 4 doors, up to 5 seats.</h6>
+                    </div>
+                    <div class="model-explore-btn">
+                        <div class="arrow-btn">
+                            <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg" width="24" height="24" loading="lazy" alt="Arrow Right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="model-row-card fade-up" onclick="location.href='models.html'">
+                <div class="card-media-wrapper">
+                    <img src="https://a.storyblok.com/f/338913/1280x1024/c06fa1b962/panamera-desktop_5-4.jpg/m/1800x0/filters:format(webp):quality(80)" class="model-card-bg model-image" style="object-position: center; transform: scale(1.01);" alt="Porsche Panamera">
+                    <video class="model-video" muted loop playsinline prefetch="auto">
+                        <source src="https://videos.porsche.com/id/panameraCR2desktop/hls.m3u8" type="video/mp4">
+                    </video>
+                </div>
+                <div class="model-card-gradient"></div>
+                
+                <div class="model-signature-container">
+                    <img src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/panamera.6dae809.svg" class="model-signature-svg" alt="Panamera Signature">
+                </div>
+                
+                <div class="model-tag">Hybrid</div>
+                <div class="model-row-footer">
+                    <div class="model-price">
+                        <h6>Luxury sedan with a high level of comfort: 4 doors, 4/5 seats.</h6>
+                    </div>
+                    <div class="model-explore-btn">
+                        <div class="arrow-btn">
+                            <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg" width="24" height="24" loading="lazy" alt="Arrow Right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DISCOVER SECTION -->
+<section class="discover-section">
+    <div class="container">
+
+        <h2 class="discover-heading">Discover</h2>
+
+        <div class="row g-4">
+
+            <!-- Card 1: Porsche Experience -->
+            <div class="col-lg-4 col-md-6 fade-up">
+                <div class="feature-card">
+                    <img src="https://a.storyblok.com/f/338913/1920x1080/c4ba0518e0/16-9_e-performance_1920x1080.jpg/m/1398x786/filters:format(webp):quality(45)" alt="Porsche Experience">
+                    <div class="feature-overlay">
+                        <h3>Porsche Experience.</h3>
+                        <div class="arrow-btn">
+                            <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg" width="24" height="24" loading="lazy" alt="Arrow Right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: E-Performance -->
+            <div class="col-lg-4 col-md-6 fade-up" style="animation-delay:.12s">
+                <div class="feature-card">
+                    <img src="https://a.storyblok.com/f/338913/900x506/2680696418/e-performance_new_mobile-optimized.jpeg/m/1398x786/filters:format(webp):quality(45)" alt="E-Performance Sustainable Mobility">
+                    <div class="feature-overlay">
+                        <h3>E-Performance &mdash;<br>Sustainable mobility</h3>
+                       <div class="arrow-btn">
+                            <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg" width="24" height="24" loading="lazy" alt="Arrow Right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Porsche Finder -->
+            <div class="col-lg-4 col-md-6 fade-up" style="animation-delay:.24s">
+                <div class="feature-card">
+                    <img src="https://a.storyblok.com/f/338913/1920x1080/05a7f7bd1f/16-9_magazine_2022_eirik_halvorsen_porsche_experience_norway_1920x1080.jpg/m/1398x786/filters:format(webp):quality(45)" alt="Porsche Finder">
+                    <div class="feature-overlay">
+                        <h3>Porsche Finder.</h3>
+                        <div class="arrow-btn">
+                            <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg" width="24" height="24" loading="lazy" alt="Arrow Right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="porsche-footer">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <a href="#" class="scroll-up-btn">
+                <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-up.9d294d1.svg" alt="Arrow Up" class="scroll-up-icon">
+                <span>Scroll up</span>
+            </a>
+        </div>
+
+        <div class="region-section">
+            <p class="footer-label">Current Region / Language</p>
+            <div class="region-row">
+                <img src="https://cdn.ui.porsche.com/porsche-design-system/flags/xx.acc7ae8.svg" alt="Region Icon" class="region-icon">
+                <span class="region-text">International / English</span>
+                <a href="#" class="change-link">Change</a>
+            </div>
+        </div>
+
+        <div class="row footer-links g-4">
+            <div class="col-md-4">
+                <h6>Locations & Contacts</h6>
+                <a href="#">Get in touch</a>
+            </div>
+
+            <div class="col-md-4">
+                <h6>Company</h6>
+                <a href="#">Investor Relations</a>
+                <a href="#">Career</a>
+                <a href="#">Global Partnership Council</a>
+                <a href="#">Compliance</a>
+                <a href="#">Newsroom & Press</a>
+                <a href="#">Information Security</a>
+            </div>
+
+            <div class="col-md-4">
+                <h6>Porsche on the web</h6>
+                <a href="#">Porsche Homepage</a>
+                <a href="#">Porsche Configurator</a>
+                <a href="#">Porsche Connect</a>
+            </div>
+        </div>
+
+        <div class="footer-social-wrapper">
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook">
+                    <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/logo-facebook.74abe88.svg" alt="Facebook" class="social-img-icon">
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/logo-instagram.b916daa.svg" alt="Instagram" class="social-img-icon">
+                </a>
+                <a href="#" aria-label="Pinterest">
+                    <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/logo-pinterest.e8f6963.svg" alt="Pinterest" class="social-img-icon">
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/logo-youtube.da3798f.svg" alt="YouTube" class="social-img-icon">
+                </a>
+                <a href="#" aria-label="X">
+                    <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/logo-twitter.5f2490a.svg" alt="X" class="social-img-icon">
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/logo-linkedin.b72559f.svg" alt="LinkedIn" class="social-img-icon">
+                </a>
+            </div>
+        </div>
+
+        <div class="copyright-block">
+            <p class="copyright-text">
+                &copy; 2026 Dr. Ing. h.c. F. Porsche AG.
+            </p>
+            <div class="legal-links">
+                <a href="#">Legal Notice</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Consumption / Emissions</a>
+                <a href="#">Open Source Software Notice</a>
+                <a href="#">Whistleblower System</a>
+                <a href="#">Accessibility</a>
+            </div>
+        </div>
+
+        <div class="footer-disclaimer">
+            <p>
+                * If the values are given as ranges, these do not relate to a single, individual vehicle and do not constitute part of the offer. They are intended solely as a means of comparing different vehicle models and refer to the product portfolio that is available on the German market. Extra features and accessories (attachments, tyre formats etc.) can change relevant vehicle parameters such as weight, rolling resistance and aerodynamics and, in addition to weather and traffic conditions, as well as individual handling, can affect the fuel consumption, energy consumption, CO₂ emissions, range and performance values of a car.
+            </p>
+            <p>
+                ** Important information about all-electric Porsche models can be found <a href="#">here</a>.
+            </p>
+        </div>
+
+        <div class="footer-wordmark-wrap">
+            <svg viewBox="0 0 4500 300" xmlns="http://www.w3.org/2000/svg">
+                <path d="M502 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h434zm6-143v65c0 7.8-4.2 12-12 12H68V66h428c7.8 0 12 4.2 12 12zm228 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h417c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H736zm411-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H742c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h405zm675-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-361v79h-68V0h502c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-428v89h428zm162-81c0-48.1 25.9-74 74-74h492v56h-486c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h422c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-492v-56h486c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-422c-48.1 0-74-25.9-74-74V74zm661 0c0-48.1 25.9-74 74-74h480v66h-474c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h474v66h-480c-48.1 0-74-25.9-74-74V74zM3817 0v300h-68V183h-407v117h-68V0h68v117h407V0h68zm156 56v66h527v56h-527v66h527v56h-595V0h595v56h-527z" />
+            </svg>
+        </div>
+
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

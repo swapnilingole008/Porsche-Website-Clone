@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porsche Macan 4 Electric</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/macan.css">
+</head>
+<body class="macan-page">
+
+<header class="porsche-navbar" id="mainNavbar">
+    <div class="nav-left">
+    <button id="menuBtn">
+        <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/menu-lines.e332216.svg" width="24" height="24" loading="lazy" alt="Menu Icon" class="menu-icon-svg" style="filter: invert(1) !important;">
+        <span>Menu</span>
+    </button>
+</div>
+    <div class="nav-center">
+        <a href="index.html" class="porsche-wordmark">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 4500 300"
+                aria-label="Porsche">
+                <path d="M502 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h434zm6-143v65c0 7.8-4.2 12-12 12H68V66h428c7.8 0 12 4.2 12 12zm228 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h417c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H736zm411-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H742c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h405zm675-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-361v79h-68V0h502c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-428v89h428zm162-81c0-48.1 25.9-74 74-74h492v56h-486c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h422c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-492v-56h486c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-422c-48.1 0-74-25.9-74-74V74zm661 0c0-48.1 25.9-74 74-74h480v66h-474c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h474v66h-480c-48.1 0-74-25.9-74-74V74zM3817 0v300h-68V183h-407v117h-68V0h68v117h407V0h68zm156 56v66h527v56h-527v66h527v56h-595V0h595v56h-527z"/>
+            </svg>
+        </a>
+    </div>
+    <div class="nav-right">
+    <a href="https://www.porsche.com/countries/" class="nav-icon-link" title="Country / Region Selector">
+        <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/globe.56cc8fc.svg" width="24" height="24" loading="lazy" alt="Country Selector" class="nav-svg-icon">
+    </a>
+    
+    <button class="nav-icon-btn" id="accountMenuBtn" title="Account">
+        <img src="https://cdn.ui.porsche.com/porsche-design-system/icons/user.c18dabe.svg" width="24" height="24" loading="lazy" alt="Account Menu" class="nav-svg-icon">
+    </button>
+</div>
+</header>
+
+<section class="macan-hero">
+    <div class="macan-hero-dark">
+        <video class="macan-hero-video" autoplay muted loop playsinline>
+            <source src="https://videos.porsche.com/id/2fa65307-8c8c-41c5-9904-a177c93030fa/solmacanherodesktop/hls.m3u8" type="video/mp4">
+        </video>
+        <div class="macan-video-overlay"></div>
+        <div class="macan-hero-title">Macan</div>
+    </div>
+
+    <div class="macan-hero-car-wrap">
+        <img src="https://a.storyblok.com/f/322327/4800x1520/7673ac1b9f/macan-4-side-2.png/m/1800x570/smart/filters:format(avif)?dpl=dpl_9A8NYGWRmqpWWWcRFM6yoioLrazQ"
+             class="macan-hero-car" alt="Porsche Macan 4 Electric Side">
+    </div>
+
+    <div class="macan-hero-info">
+        <h2>Macan 4 Electric</h2>
+        <div class="macan-fuel-badge">
+            <i class="fas fa-bolt" style="font-size:11px;"></i>Electric
+        </div>
+        <div class="macan-hero-btns">
+            <button class="btn-macan-dark" id="changeVariantBtn">Change model variant</button>
+            <button class="btn-macan-light" onclick="location.href='configurator.html'">Configure</button>
+        </div>
+    </div>
+</section>
+
+<section class="macan-specs" id="specs">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-6 macan-specs-left">
+
+                <div class="macan-stat">
+                    <div class="macan-stat-num">
+                        <span class="n count-number" data-target="21">0</span>
+                        <span class="u">min</span>
+                    </div>
+                    <div class="macan-stat-desc">
+                        Charging time for direct current (DC) with maximum charging power (10 to up to 80 %)<sup>1</sup>
+                    </div>
+                </div>
+                <div class="macan-stat-line"></div>
+
+                <div class="macan-stat">
+                    <span class="macan-stat-pre">Up to</span>
+                    <div class="macan-stat-num">
+                        <span class="n count-number" data-target="610">0</span>
+                        <span class="u">km</span>
+                    </div>
+                    <div class="macan-stat-desc">
+                        Electric range combined (model range)<sup>2</sup>
+                    </div>
+                </div>
+                <div class="macan-stat-line"></div>
+
+                <div class="macan-stat">
+                    <div class="macan-stat-num">
+                        <span class="n count-number" data-target="5.2" data-decimal="1">0.0</span>
+                        <span class="u">s</span>
+                    </div>
+                    <div class="macan-stat-desc">
+                        Acceleration 0 – 100 km/h with Launch Control
+                    </div>
+                </div>
+                <div class="macan-stat-line"></div>
+
+                <div class="macan-stat">
+                    <div class="macan-stat-num">
+                        <span class="n count-number" data-target="300">0</span>
+                        <span class="u">kW</span>
+                        <span class="slash">/</span>
+                        <span class="n count-number" data-target="408">0</span>
+                        <span class="u">PS</span>
+                    </div>
+                    <div class="macan-stat-desc">
+                        Overboost Power with Launch Control up to (kW) / Overboost Power with Launch Control up to (PS)
+                    </div>
+                    <div class="macan-stat-desc" style="margin-top:14px;">
+                        Details of the measuring method can be found at <a href="https://www.porsche.com/gtr21" target="_blank">www.porsche.com/gtr21</a>
+                    </div>
+                </div>
+                <div class="macan-stat-line"></div>
+
+                <div class="macan-stat">
+                    <div class="macan-stat-num">
+                        <span class="n count-number" data-target="220">0</span>
+                        <span class="u">km/h</span>
+                    </div>
+                    <div class="macan-stat-desc">Top speed</div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 d-none d-lg-flex align-items-start">
+                <div class="macan-car-sticky w-100">
+                    <img src="https://a.storyblok.com/f/322327/1720x1210/749e18ab6d/macan-4-front.png/m/1720x1210/smart/filters:format(avif)?dpl=dpl_9A8NYGWRmqpWWWcRFM6yoioLrazQ"
+                         alt="Porsche Macan Front View" class="img-fluid">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer class="macan-footer">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="macan-footer-logo">PORSCHE</div>
+                <div class="macan-footer-tag">Electric Performance. Since 1948.</div>
+            </div>
+            <div class="col-lg-2 col-6">
+                <h6 style="color:#fff; margin-bottom:18px; font-size:0.82rem; letter-spacing:1px; text-transform:uppercase;">Models</h6>
+                <ul class="macan-footer-links">
+                    <li><a href="911.html">911</a></li>
+                    <li><a href="taycan.html">Taycan</a></li>
+                    <li><a href="macan.html">Macan</a></li>
+                    <li><a href="cayenne.html">Cayenne</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-6">
+                <h6 style="color:#fff; margin-bottom:18px; font-size:0.82rem; letter-spacing:1px; text-transform:uppercase;">Company</h6>
+                <ul class="macan-footer-links">
+                    <li><a href="about.html">About Porsche</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.html">Find a Dealer</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <h6 style="color:#fff; margin-bottom:18px; font-size:0.82rem; letter-spacing:1px; text-transform:uppercase;">Follow Us</h6>
+                <div style="display:flex; gap:22px; font-size:18px; color:#8e8e93;">
+                    <i class="fab fa-instagram" style="cursor:pointer;"></i>
+                    <i class="fab fa-facebook" style="cursor:pointer;"></i>
+                    <i class="fab fa-youtube" style="cursor:pointer;"></i>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="macan-footer-copy">&copy; 2026 Porsche Clone. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- MODEL VARIANT PANEL  -->
+<div class="mv-overlay" id="mvOverlay">
+    <div class="mv-panel" id="mvPanel">
+        <div class="mv-panel-header">
+            <div class="mv-brand-title">Macan</div>
+            <div class="mv-subtitle">5 Model variants available</div>
+            <button class="mv-close-btn" id="mvCloseBtn" aria-label="Close">&#x2715;</button>
+        </div>
+
+        <div class="mv-scroll-area">
+
+            <!-- Macan 4 Electric -->
+            <div class="mv-card">
+                <img class="mv-car-img"
+                     src="https://a.storyblok.com/f/322327/4800x1520/7673ac1b9f/macan-4-side-2.png/m/1800x570/smart/filters:format(avif)?dpl=dpl_9A8NYGWRmqpWWWcRFM6yoioLrazQ"
+                     alt="Macan 4 Electric">
+                <div class="mv-card-body">
+                    <div class="mv-card-name">Macan 4 Electric</div>
+                    <div class="mv-badges">
+                        <span class="mv-badge mv-badge-year">2026</span>
+                        <span class="mv-badge mv-badge-spec">Electric</span>
+                        <span class="mv-badge mv-badge-spec">All-Wheel Drive</span>
+                        <span class="mv-badge mv-badge-spec">Automatic</span>
+                    </div>
+                    <div class="mv-stats-row">
+                        <div class="mv-stat-block">
+                            <div class="mv-stat-value">5.2 s</div>
+                            <div class="mv-stat-label">Acceleration 0 – 100 km/h with Launch Control</div>
+                        </div>
+                        <div class="mv-stat-block">
+                            <div class="mv-stat-value">300 kW / 408 PS</div>
+                            <div class="mv-stat-label">Overboost Power with Launch Control up to (kW) / Overboost Power with Launch Control up to (PS)</div>
+                        </div>
+                    </div>
+                    <div class="mv-consumption">Electric energy consumption combined (model range): 20.4 – 17.8 kWh/100 km, CO₂-emissions combined (model range): 0 g/km</div>
+                    <div class="mv-card-btns">
+                        <button class="mv-btn-primary">Explore in Detail</button>
+                        <button class="mv-btn-secondary" onclick="location.href='configurator.html'">Configure</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Macan Electric -->
+            <div class="mv-card">
+                <img class="mv-car-img"
+                     src="https://images.porsche.com/f/285489813253582/5000x1705/52319538ec/model-xabaa1-2026-side-shot_d9d1a18d94a44cc6838513222f89d7a1.png/m/1040x355/smart/filters:format(avif)?dpl=dpl_9A8NYGWRmqpWWWcRFM6yoioLrazQ"
+                     alt="Macan Electric"
+                     onerror="this.src='https://files.porsche.com/filestore/image/multimedia/none/macan-modelimage-sideshot/normal/cbf87f0a-d4c3-11ee-8b67-005056bbdc38;sJ;twebp/porsche-normal.webp'">
+                <div class="mv-card-body">
+                    <div class="mv-card-name">Macan Electric</div>
+                    <div class="mv-badges">
+                        <span class="mv-badge mv-badge-year">2026</span>
+                        <span class="mv-badge mv-badge-spec">Electric</span>
+                        <span class="mv-badge mv-badge-spec">Rear-Wheel Drive</span>
+                        <span class="mv-badge mv-badge-spec">Automatic</span>
+                    </div>
+                    <div class="mv-stats-row">
+                        <div class="mv-stat-block">
+                            <div class="mv-stat-value">5.7 s</div>
+                            <div class="mv-stat-label">Acceleration 0 – 100 km/h with Launch Control</div>
+                        </div>
+                        <div class="mv-stat-block">
+                            <div class="mv-stat-value">265 kW / 360 PS</div>
+                            <div class="mv-stat-label">Overboost Power with Launch Control up to (kW) / Overboost Power with Launch Control up to (PS)</div>
+                        </div>
+                    </div>
+                    <div class="mv-consumption">Electric energy consumption combined (model range): 19.3 – 16.7 kWh/100 km, CO₂-emissions combined (model range): 0 g/km</div>
+                    <div class="mv-card-btns">
+                        <button class="mv-btn-primary">Explore in Detail</button>
+                        <button class="mv-btn-secondary" onclick="location.href='configurator.html'">Configure</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Macan 4S Electric -->
+            <div class="mv-card">
+                <img class="mv-car-img"
+                     src="https://images.porsche.com/f/285489813253582/5000x1705/7c4aecd283/model-xabdc1-2026-side-shot_61b0544ee2a4463896b75911e72eddf9.png/m/1040x355/smart/filters:format(avif)?dpl=dpl_9A8NYGWRmqpWWWcRFM6yoioLrazQ"
+                     alt="Macan 4S Electric"
+                     onerror="this.src='https://files.porsche.com/filestore/image/multimedia/none/macan-modelimage-sideshot/normal/cbf87f0a-d4c3-11ee-8b67-005056bbdc38;sJ;twebp/porsche-normal.webp'">
+                <div class="mv-card-body">
+                    <div class="mv-card-name">Macan 4S Electric</div>
+                    <div class="mv-badges">
+                        <span class="mv-badge mv-badge-year">2026</span>
+                        <span class="mv-badge mv-badge-spec">Electric</span>
+                        <span class="mv-badge mv-badge-spec">All-Wheel Drive</span>
+                        <span class="mv-badge mv-badge-spec">Automatic</span>
+                    </div>
+                    <div class="mv-stats-row">
+                        <div class="mv-stat-block">
+                            <div class="mv-stat-value">4.1 s</div>
+                            <div class="mv-stat-label">Acceleration 0 – 100 km/h with Launch Control</div>
+                        </div>
+                        <div class="mv-stat-block">
+                            <div class="mv-stat-value">380 kW / 516 PS</div>
+                            <div class="mv-stat-label">Overboost Power with Launch Control up to (kW) / Overboost Power with Launch Control up to (PS)</div>
+                        </div>
+                    </div>
+                    <div class="mv-consumption">Electric energy consumption combined (model range): 20.4 – 17.7 kWh/100 km, CO₂-emissions combined (model range): 0 g/km</div>
+                    <div class="mv-card-btns">
+                        <button class="mv-btn-primary">Explore in Detail</button>
+                        <button class="mv-btn-secondary" onclick="location.href='configurator.html'">Configure</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Macan Turbo Electric -->
+            <div class="mv-card">
+                <img class="mv-car-img"
+                     src="https://images.porsche.com/f/285489813253582/5000x1705/87e34bc106/model-xabfd1-2026-side-shot_ce5fd66875104cf387efccef5b54f468.png/m/1040x355/smart/filters:format(avif)?dpl=dpl_9A8NYGWRmqpWWWcRFM6yoioLrazQ"
+                     alt="Macan Turbo Electric"
+                     onerror="this.src='https://files.porsche.com/filestore/image/multimedia/none/macan-modelimage-sideshot/normal/cbf87f0a-d4c3-11ee-8b67-005056bbdc38;sJ;twebp/porsche-normal.webp'">
+                <div class="mv-card-body">
+                    <div class="mv-card-name">Macan Turbo Electric</div>
+                    <div class="mv-badges">
+                        <span class="mv-badge mv-badge-year">2026</span>
+                        <span class="mv-badge mv-badge-spec">Electric</span>
+                        <span class="mv-badge mv-badge-spec">All-Wheel Drive</span>
+                        <span class="mv-badge mv-badge-spec">Automatic</span>
+                    </div>
+                    <div class="mv-stats-row">
+                        <div class="mv-stat-block">
+                            <div class="mv-stat-value">3.3 s</div>
+                            <div class="mv-stat-label">Acceleration 0 – 100 km/h with Launch Control</div>
+                        </div>
+                        <div class="mv-stat-block">
+                            <div class="mv-stat-value">470 kW / 639 PS</div>
+                            <div class="mv-stat-label">Overboost Power with Launch Control up to (kW) / Overboost Power with Launch Control up to (PS)</div>
+                        </div>
+                    </div>
+                    <div class="mv-consumption">Electric energy consumption combined (model range): 20.6 – 18.3 kWh/100 km, CO₂-emissions combined (model range): 0 g/km</div>
+                    <div class="mv-card-btns">
+                        <button class="mv-btn-primary">Explore in Detail</button>
+                        <button class="mv-btn-secondary" onclick="location.href='configurator.html'">Configure</button>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /mv-scroll-area -->
+    </div><!-- /mv-panel -->
+</div><!-- /mv-overlay -->
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/macan.js"></script>
+</body>
+</html>

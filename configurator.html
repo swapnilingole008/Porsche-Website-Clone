@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macan Configurator – Porsche</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/configurator.css">
+
+</head>
+<body>
+
+<!-- LAYER 1 — TOP NAVBAR  (Menu | PORSCHE SVG | icons) -->
+<nav class="cfg-navbar">
+    <div class="cfg-navbar-left" onclick="location.href='index.html'">
+        <i class="fas fa-bars"></i>
+        <span style="font-size:13px;font-weight:500;letter-spacing:0.3px;">Menu</span>
+    </div>
+
+    <div class="cfg-navbar-logo">
+        <!-- Porsche wordmark SVG — same as index.html -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 300"
+             aria-label="Porsche" style="height:18px;fill:#000;width:auto;">
+            <path d="M502 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h434zm6-143v65c0 7.8-4.2 12-12 12H68V66h428c7.8 0 12 4.2 12 12zm228 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h417c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H736zm411-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H742c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h405zm675-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-361v79h-68V0h502c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-428v89h428zm162-81c0-48.1 25.9-74 74-74h492v56h-486c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h422c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-492v-56h486c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-422c-48.1 0-74-25.9-74-74V74zm661 0c0-48.1 25.9-74 74-74h480v66h-474c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h474v66h-480c-48.1 0-74-25.9-74-74V74zM3817 0v300h-68V183h-407v117h-68V0h68v117h407V0h68zm156 56v66h527v56h-527v66h527v56h-595V0h595v56h-527z"/>
+        </svg>
+    </div>
+
+    <div class="cfg-navbar-right">
+        <i class="far fa-bookmark" title="Bookmark"></i>
+        <i class="fas fa-globe" title="Region" style="font-size:20px;"></i>
+    </div>
+</nav>
+
+<!-- LAYER 2 — SUB-BAR -->
+<div class="cfg-subbar">
+    <div class="cfg-subbar-left">
+        <button class="cfg-back-btn" onclick="history.back()" title="Back">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="cfg-create-code-btn">
+            <i class="far fa-file-alt"></i>
+            <span>Create Porsche Code</span>
+        </button>
+    </div>
+    <div class="cfg-subbar-right">
+        <div class="cfg-price-wrap">
+            <div class="cfg-price-main" id="totalPriceDisplay">INR 1,21,62,000</div>
+            <div class="cfg-price-sub">Including GST 1. Opti...</div>
+        </div>
+        <button class="cfg-btn-summary" onclick="openSummary()">Summary</button>
+        <button class="cfg-btn-enquire" onclick="alert('Enquiry sent to Porsche Centre!')">Enquire about this vehicle</button>
+        <button class="cfg-subbar-search-btn"><i class="fas fa-search"></i></button>
+    </div>
+</div>
+
+<!-- MAIN BODY -->
+<div class="cfg-body">
+
+    <!-- LEFT: CAR VIEWER -->
+    <div class="cfg-viewer">
+
+        <!-- Main image -->
+        <div class="cfg-image-area">
+            <img id="mainCarImg"
+                 src="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQFV6AIwwBZNGAYciCKylDEqJZU-IgAFvhQSKggbBwAIgCCAJrBoQThzFEgCuKsAK5gLiluIAAaGQBCGRkAjLlK+RGgkLCIpCAADACKwS0NABKjAOIAHKMAcgDMowAqy1QATABq6yCLAGLuwYtZAOzBACwAogBslwDSAKyXADJ3VI8X88GPtQDCwQAnDcBvsgRlJlQMvdglMWgAtYIAKQu7xALymKzSACUXsEhi0pvidsF3LVzpRwBAys56ABPDgASW+VCwEAM-CytE0KA2Aw2j0sVhAhFouASCC6IBgEHoOF0IAAVgpaEgqLhGOEFJobLoYGh+KLLEA?clientId=icc"
+                 alt="Porsche Macan 2025"
+                 class="cfg-car-img"
+                 id="mainCarImg">
+
+            <!-- Expand / fullscreen -->
+            <button class="cfg-expand-btn" onclick="openLightbox()" title="View fullscreen">
+                <i class="fas fa-expand-alt"></i>
+            </button>
+        </div>
+
+        <!-- Bottom toolbar -->
+        <div class="cfg-viewer-toolbar">
+            <div class="cfg-tool-btns">
+                <button class="cfg-tool-btn" title="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button class="cfg-tool-btn" title="Camera view" onclick="cycleView()">
+                    <i class="fas fa-camera"></i>
+                </button>
+                <button class="cfg-tool-btn" title="Compare">
+                    <i class="fas fa-arrows-left-right"></i>
+                </button>
+            </div>
+            <button class="cfg-360-btn" onclick="alert('360° View – add your embed here')">
+                Open 360° View
+            </button>
+        </div>
+
+        <!-- Thumbnail strip -->
+        <div class="cfg-thumbstrip" id="thumbStrip">
+            <div class="cfg-thumb-nav" id="thumbPrev" onclick="scrollThumbs(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+
+            <!-- Thumbnails — clicking switches main image -->
+            <div class="cfg-thumb active" onclick="switchThumb(this, THUMB_URLS[0])">
+                <img src="https://prs.porsche.com/iod/thumbnail/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQHUAFnFwMIELAACAAUIekIwT1o5EEVlKGJUSyp+RE98KCRUEDYOABEAQQBNGLiCBOZkkAVxVgBXMBcctxAADQKAIQKCgEZSpXLE0EhYRFIQAAYARRiejoAJWYBxAA5ZgDkAZlmAFW2qACYANX2QTYAxAFUYzaKAdhiAFgBRADYngGkAVieAGXeqF9HusYl9WgBhGIATleE3O0IKiyoBQ+MSWPQAWjEAFKPAEgX5LHZ5ABKvxiUx6SwpJxil1aD0o4AgdWc9AAnhwAJIgqhYCAGfhFWiaFAHCYHL6WKwgQi0XAZBBDEAwMI4XQgABWCloSCouEYCQUmhsuhgaH4cssQA?clientId=icc" alt="" onerror="this.src='https://placehold.co/80x48/eee/999?text=1'">
+            </div>
+            <div class="cfg-thumb" onclick="switchThumb(this, THUMB_URLS[1])">
+                <img src="https://prs.porsche.com/iod/thumbnail/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjD5CAFrVr8QVCAAd8RZiABuaenAy4OrWoQDWudSAC+NqrSg644qHSjHUINhwDqcuFwGCAgsAAIABQh6QjAFFRB1TShiVDsqfkQ5fCgkLx9kEAARAEEATQSkghTmdJA1cVYAVzBPFnZCgA0SgCESkoBGSo1q1NBIWERSEAAGAEUEgZ6ACUWAcQAORYA5AGZFgBV9qgAmADVjkF2AMQBVBN2ygHYEgBYAUQA2N4BpAFY3gAZb5UP6vbYJP6dADCCQAnJ8Ztd4SVVlQSj8EmsBgAtBIAKVeIJAgLWByKACVAQk5gM1jSLglbp0XpRwBAmh56ABPDgASQhVCwEFM-DKtH0KBOMxOfzs9hAhFouByCDGIBg0RwnhAACs1LQkFRcIwUmp9I5PDA0PwlXYgA?clientId=icc" alt="" onerror="this.src='https://placehold.co/80x48/eee/999?text=2'">
+            </div>
+            <div class="cfg-thumb" onclick="switchThumb(this, THUMB_URLS[2])">
+                <img src="https://prs.porsche.com/iod/thumbnail/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XoTa0BtGLhBUIAB3xFmIAG5p6cDDOQhWtQgGtcCkAF8zVWlFVx60OlB0t2ugOoALOLgYQIWAAIABQh6QjAPWlkQBSUoYlQLKn5ED3woJFQQNg4AEQBBAE1o2IJ45iSQeXtWAFcwZ2zXEAANfIAhfPyARhLFMoTQSFhEUhAABgBFaO72gAkZgHEADhmAOQBmGYAVLaoAJgA1PZANgDEAVWiNwoB2aIAWAFEANkeAaQBWR4AZN6pPg81tFPi0AMLRACcL3GZyh+QWVHy72ii26AC1ogApB7-EA-RbbXIAJR+0Um3UW5OO0QuLXulHAEFqTnoAE8OABJYFULAQfT8Qq0DQofbjfafCyWECEWi4dIIQYgGChHA6EAAK3ktCQVFwjHi8g01h0MDQ-FlFiAA?clientId=icc" alt="" onerror="this.src='https://placehold.co/80x48/eee/999?text=3'">
+            </div>
+            <div class="cfg-thumb" onclick="switchThumb(this, THUMB_URLS[3])">
+                <img src="https://prs.porsche.com/iod/thumbnail/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XvVpp6A2jFwgqEAA74izEADcJcDLOQhWtQgGtcikAF8zVWlDVx60OlB0t2ugOoALOLgYQIWAAIABQh6QjAPWjkQRWUoYlQLKn5ED3woJFQQNg4AEQBBAE1o2IJ45iSQBXtWAFcwZ2zXEAANfIAhfPyARhKlMoTQSFhEUhAABgBFaO72gAkZgHEADhmAOQBmGYAVLaoAJgA1PZANgDEAVWiNwoB2aIAWAFEANkeAaQBWR4AZN6pPg81tFPi0AMLRACcL3GZyh+QWVHy72ii26AC1ogApB7-EA-RbbXIAJR+0Um3UW5OO0QuLXulHAEFqTnoAE8OABJYFULAQfT8QriegofbjfafCyWECEWi4dIIQYgGChHA6EAAKwUtCQVFwjHiCgk1h0MDQ-FlFiAA?clientId=icc" alt="" onerror="this.src='https://placehold.co/80x48/eee/999?text=4'">
+            </div>
+            <div class="cfg-thumb" onclick="switchThumb(this, THUMB_URLS[4])">
+                <img src="https://prs.porsche.com/iod/thumbnail/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAC0T9e9Wmnq8ANrRi4QVCAAd8RZiABu4uBjnIQrWoQDWuJSAC+5qrSjq49aHSi6W7PQHVBuBhAhYABAAKEPSEYPy08iBKKlDEqJZUkkL4UEioIGwcACIAggCaUTEEccyJIIoOrACuYC6ZbiAAGrkAQrm5AIxFyiXxoJCwiKQgAAwAilGdrQASUwDiABxTAHIAzFMAKhtUAEwAajsgawBiAKpRa-kA7FEALACiAGz3ANIArPcAMi9U73crKLvJoAYSiAE4nqMThDcnMqLlXlF5p0AFpRABSd1+IC+8022QASl8ouNOvNSYcomcmrdKOAINVnPQAJ4cACSgKoWAgBkk+TE9BQu1Gu3elisIEItFwqQQ-RAMBCOF0IAAVopaEgqLhGHFFOIbLoYGhJNLLEA?clientId=icc" alt="" onerror="this.src='https://placehold.co/80x48/eee/999?text=5'">
+            </div>
+            <div class="cfg-thumb" onclick="switchThumb(this, THUMB_URLS[5])">
+                <img src="https://prs.porsche.com/iod/thumbnail/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrRcIKhAAO+IsxAA3NPTgZJyEK1qEA1rlkgAvsaq0oSuOKh0omluy0B1ABZxcDCBCwACAAoQ9IRgrrRSILLyUMSoplT8iK74UEioIGwcACIAggCaEVEEMczxIDLirACuYA4ZTiAAGjkAQjk5AIyFcsWxoJCwiKQgAAwAihEdLQASkwDiAByTAHIAzJMAKutUAEwAatsgqwBiAKoRq3kA7BEALACiAGx3ANIArHcAMs9Ub7fLETejQAwhEAJyPEbHcE5WZUHIvCJzDoALQiAClbj8QJ85hssgAlT4RMYdOYkg4RU6NG6UcAQKr2egATw4AEkAVQsBAdPw8rRVCgdiMdm9TGYQIRaLgUgg+iAYEEcJoQAArGS0JBUXCMGIyVQWTQwND8KWmIA?clientId=icc" alt="" onerror="this.src='https://placehold.co/80x48/eee/999?text=6'">
+            </div>
+            <div class="cfg-thumb" onclick="switchThumb(this, THUMB_URLS[6])">
+                <img src="https://prs.porsche.com/iod/thumbnail/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XvVpp6IKhAAO+IsxAA3CXAy4OrWoQDWuWSAC+hqrShK49aHSgbUINhwDqACzi4GECFgAEABQh6QjAXWikQWXkoYlRjKn5EF3woJHtHZBAAEQBBAE1wyIJo5jiQGStWAFcwOxZ2DIANbIAhbOyARgK5IpjQSFhEUhAABgBFcPbmgAkJgHEADgmAOQBmCYAVNaoAJgA1LZAVgDEAVXCV3IB2cIAWAFEANluAaQBWW4AZJ6pXm6Xw14NADC4QAnA9hkcwdkZlRss9wrN2gAtcIAKRu3xAH1m60yACUPuFRu1ZsT9uETg1rpRwBBKrZ6ABPDgASX+VCwEC0-Fy4kkyG2w22r2MJhAhFouGSCF6IBggRwdhAACsZLQkFRcIxojIJGY7DA0PxJcYgA?clientId=icc" alt="" onerror="this.src='https://placehold.co/80x48/eee/999?text=7'">
+            </div>
+            <div class="cfg-thumb" onclick="switchThumb(this, THUMB_URLS[7])">
+                <img src="https://prs.porsche.com/iod/thumbnail/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFoZ7ovVmkIALAEYQ09dlQgAHfEWYgAbtLgZcHVrUIBrXApABfE1VpRVcAVDrcVbDgHVRcXAwgQsAAgAKEPSEYKK0IHKKBFDEqGZUADaIovhQSKic7MggACIAggCa4SAKStHMcSDyAqwArmDa6U5ZABq5AEK5uQCMRSVRMaCQsIikIAAMAIpFXW0AEtMA4gAc0wByAMzTACqbVABMAGq7IOsAYgCqRev5AOxFACwAogBsDwDSAKwPADKvVB-3VZFD7NADCRQAnM8xqdIbl5lRcm8igsugAtIoAKXufxA3wWW2yACVvkUJl0FmSjkVzs07pRwBAatx6ABPDgASSBVCwEF08XytGkKD2Yz2HzM5hAhFouBSCAGIBggRwDRAACt5LQkFRcIxovJpJYGjA0PEZWYgA?clientId=icc" alt="" onerror="this.src='https://placehold.co/80x48/eee/999?text=8'">
+            </div>
+            <div class="cfg-thumb" onclick="switchThumb(this, THUMB_URLS[8])">
+                <img src="https://prs.porsche.com/iod/thumbnail/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFoZ7ovQrTzEqEAA74izEADc09OBlwdWtQgGtckkAF89VWlDlwBUOt1lsOAdQAWcXAwgQsAAgAKEeoTD3aEHEpAihiVAMqABtEe3woJFROdmQQABEAQQBNIJBJaTDmSJAJAVYAVzBVJJtUgA0MgCEMjIBGXPzQ8NBIWERSEAAGAEVc1saACTGAcQAOMYA5AGYxgBUVqgAmADUNkCWAMQBVXKWsgHZcgBYAUQA2a4BpAFZrgBkHqmerhdznuoAwrkAJx3QYHEEZKZUDKPXLTVoALVyACkrp8QG9pqs0gAlN65YataaE3a5I51S6UcAQcrcegATw4AElflQsBB1FEsiJ6ChNoNNs8DIYQMJcPEEN0QDAfDhqiAAFYSWhIKi4RhhCSKYzVGBoKLCAxAA?clientId=icc" alt="" onerror="this.src='https://placehold.co/80x48/eee/999?text=9'">
+            </div>
+            <div class="cfg-thumb" onclick="switchThumb(this, THUMB_URLS[9])">
+                <img src="https://prs.porsche.com/iod/thumbnail/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFp7a09HoQG5iVCAAd8RZiABuguBlwdWtQgGtcUkAF89VWlHlx60OtzlsOAdQAWcXAwgQsAAgAKEeoTD3aEAlpAihiVAMqABtEe3woJFROdmQQABEAQQBNIJApGTDmSJBJc1YAVzBVJJtUgA0MgCEMjIBGXPzQ8NBIWERSEAAGAEVc1saACTGAcQAOMYA5AGYxgBUVqgAmADUNkCWAMQBVXKWsgHZcgBYAUQA2a4BpAFZrgBkHqmerhdznuoAwrkAJx3QYHEEZKZUDKPXLTVoALVyACkrp8QG9pqs0gAlN65YataaE3a5I51S6UcAQcrcegATw4AElflQsBB1FEsgJ6ChNoNNs8DIYQCJcPEEN0QDAfDhqiAAFaSWhIKi4RhhSSCYzVGBoKIiAxAA?clientId=icc" alt="" onerror="this.src='https://placehold.co/80x48/eee/999?text=10'">
+            </div>
+
+            <div class="cfg-thumb-nav" id="thumbNext" onclick="scrollThumbs(1)">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+
+    </div><!-- /cfg-viewer -->
+
+    <!-- RIGHT: OPTIONS PANEL -->
+    <div class="cfg-panel">
+
+        <!-- Panel Header -->
+        <div class="cfg-panel-header">
+            <div class="cfg-model-title-row">
+                <h2>Macan</h2>
+                <span class="cfg-year-badge">2025</span>
+            </div>
+            <button class="cfg-tech-link">Technical data and standard equipment</button>
+            <div class="cfg-search-row">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search equipment options"
+                       id="searchInput" oninput="handleSearch(this.value)">
+            </div>
+        </div>
+
+        <!-- Scrollable Options -->
+        <div class="cfg-options-scroll" id="optionsScroll">
+
+            <!-- SECTION 1: EXTERIOR COLOURS -->
+            <div class="cfg-section-block" id="block-exterior">
+                <div class="cfg-section-head" onclick="toggleSection('body-exterior', this)">
+                    <i class="fas fa-chevron-up"></i>
+                    <h3>Exterior Colours</h3>
+                </div>
+                <div class="cfg-section-body" id="body-exterior">
+
+                    <!-- Contrasts -->
+                    <div class="cfg-sub-label">Contrasts
+                        <span style="font-weight:400;color:#777;font-size:12.5px;"> &nbsp;INR 0</span>
+                    </div>
+                    <div class="cfg-sub-note">White &nbsp;<i class="fas fa-info-circle"></i></div>
+                    <div class="cfg-swatches">
+                        <div class="cfg-swatch active"
+                             style="background:#e9e9e4;"
+                             data-name="White" data-price="0"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQFV6AIwwBZNGAYciCKylDEqJZU-IgAFvhQSKggbBwAIgCCAJrBoQThzFEgCuKsAK5gLiluIAAaGQBCGRkAjLlK+RGgkLCIpCAADACKwS0NABKjAOIAHKMAcgDMowAqy1QATABq6yCLAGLuwYtZAOzBACwAogBslwDSAKyXADJ3VI8X88GPtQDCwQAnDcBvsgRlJlQMvdglMWgAtYIAKQu7xALymKzSACUXsEhi0pvidsF3LVzpRwBAys56ABPDgASW+VCwEAM-CytE0KA2Aw2j0sVhAhFouASCC6IBgEHoOF0IAAVgpaEgqLhGOEFJobLoYGh+KLLEA?clientId=icc"
+                             onclick="selectColor(this,'exterior')"></div>
+                        <div class="cfg-swatch"
+                             style="background:#1a1a1a;"
+                             data-name="Black (roof contrast)" data-price="0"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQFV6AIwwBZNGAYciCKylDEqJZU-IgAFvhQSKggbBwAIgCCAJrBoQThzFEgCuKsAK5gLiluIAAaGQBCGRkAjLlK+RGgkLCIpCAtDQASwS0A4gAcowByAMyjACrzVABMAGrLILMAYu7Bs1kA7MEALACiAGynANIArKcAMldUtyfTwbe1AMLBAJwXAAZtn8MiMqK1ghlrsExi0AFrBABSJ2eIAeYwWaQASg9ggBFcb4jbBdy1Y6UcAQMrOegATw4AEl3lQsBADPwsrRNCgVgCVrdLFYQIRaLgEgguiAYBB6DhdCAAFYKWhIKi4RjhBSaGy6GBofgiyxAA?clientId=icc"
+                             onclick="selectColor(this,'exterior')"></div>
+                    </div>
+
+                    <!-- Shades -->
+                    <div class="cfg-sub-label">Shades
+                        <span style="font-weight:400;color:#777;font-size:12.5px;"> &nbsp;INR 1,38,500</span>
+                        &nbsp;<i class="fas fa-info-circle" style="color:#bbb;font-size:11px;"></i>
+                    </div>
+                    <div class="cfg-swatches">
+                        <div class="cfg-swatch split"
+                             style="--c1:#1b1b1b;--c2:#3a3a3a;"
+                             data-name="Jet Black Metallic" data-price="138500"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQFV6AIwwBZNGAYciCKylDEqJZU-IgAFvhQSKggbBwAIgCCAJrBoQThzFEgCuKsAK5gLiluIAAaGQBCGRkAjLlK+RGgkLCIpCAtDQASwS0A4gAcowByAMyjACrzVABMC8ErAGrLILMAYu7Bs1kA7MEALACiAGwXANIArBcAMrdUD+fTwQ+1AMLBAE5rgAGPaAjIjKgZO7BMYtABawQAUuc3iBnmMFmkAErPYIARXGBO2wXctTOlHAEDKznoAE8OABJL5ULAQAz8LK0TQoFbAlYPSxWECEWi4BIILogGAQeg4XQgABWCloSCouEY4QUmhsuhgaH4ossQA?clientId=icc"
+                             onclick="selectColor(this,'exterior')"></div>
+                        <div class="cfg-swatch split"
+                             style="--c1:#9e9e9e;--c2:#c2c2c2;"
+                             data-name="Dolomite Silver Metallic" data-price="138500"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQFV6AIwwBZNGAYciCKylDEqJZU-IgAFvhQSKggbBwAIgCCAJrBoQThzFEgCuKsAK5gLiluIAAaGQBCGRkAjLlK+RGgkLCIpCAtDQASwS0A4gAcowByAMyjACrzVABMAGrLILMAYu7Bs1kA7MEALACiAGynANIArKcAMldUtyfTwbe1AMLBAJwXAAZtn8MiMqBlrsExi0AFpQ45UABSJ2eIAeYwWaQASg9ggBFcb4jbBdy1Y6UcAQMrOegATw4AEl3lQsBADPwsrRNCgVgCVrdLFYQIRaLgEgguiAYBB6DhdCAAFYKWhIKi4RjhBSaGy6GBofgiyxAA?clientId=icc"
+                             onclick="selectColor(this,'exterior')"></div>
+                        <div class="cfg-swatch split"
+                             style="--c1:#4a4a4a;--c2:#686868;"
+                             data-name="Volcano Grey Metallic" data-price="138500"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQFV6AIwwBZNGAYciCKylDEqJZU-IgAFvhQSKggbBwAIgCCAJrBoQThzFEgCuKsAK5gLiluIAAaGQBCGRkAjLlK+RGgkLCIpCAtDQASwS0A4gAcowByAMyjACrzVABMI6sAassgswBi7sGzWQDswQAsAKIAbOcA0gCs5wAyN1T3Z9PB97UAwsEAnFcAAy7AEZdYgDK3YJjFoALWCACkzq8QE8xgs0gAlJ7BACK43xW2C7lqp0o4AgZWc9AAnhwAJKfKhYCAGfhZWiaFArIEre6WKwgQi0XAJBBdEAwCD0HC6EAAKwUtCQVFwjHCCk0Nl0MDQ-BFliAA?clientId=icc"
+                             onclick="selectColor(this,'exterior')"></div>
+                        <div class="cfg-swatch split"
+                             style="--c1:#d2d2cc;--c2:#e4e4de;"
+                             data-name="Chalk" data-price="138500"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQFV6AIwwBZNGAYciCKylDEqJZU-IgAFvhQSKggbBwAIgCCAJrBoQThzFEgCuKsAK5gLiluIAAaGQBCGRkAjLlK+RGgkLCIpCAtDQASwS0A4gAcowByAMyjACrzVABMAGrLILMAYu7Bs1kA7MEALACiAGynANIArKcAMldUtyfTwbe1AMLBAJwXAAZtn8MiMqBlrsFtgDgmMWgAtYIAKROzxADzGCzSACUHsEAIrjAkbYLuWrHSjgCBlZz0ACeHAAku8qFgIAZ+FlaJoUCsAStbpYrCBCLRcAkEF0QDAIPQcLoQAArBS0JBUXCMcIKTQ2XQwND8UWWIA?clientId=icc"
+                             onclick="selectColor(this,'exterior')"></div>
+                    </div>
+
+                    <!-- Dreams Colours -->
+                    <div class="cfg-sub-label">Dreams
+                        <span style="font-weight:400;color:#777;font-size:12.5px;"> &nbsp;INR 2,21,600</span>
+                        &nbsp;<i class="fas fa-info-circle" style="color:#bbb;font-size:11px;"></i>
+                    </div>
+                    <div class="cfg-swatches">
+                        <div class="cfg-swatch"
+                             style="background:#6a6a7a;"
+                             data-name="Frosted Blue Grey Metallic" data-price="221600"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQFV6AIwwBZNGAYciCKylDEqJZU-IgAFvhQSKggbBwAIgCCAJrBoQThzFEgCuKsAK5gLiluIAAaGQBCGRkAjLlK+RGgkLCIpCAtDQASwS0A4gAcowByAMyjACrzVABMAGrLILMAYu7Bs1kA7MEALACiAGynANIArKcAMldUtyfTwbe1AMLBF77BAE4LgAGbaAjIjKgZa7BMYtABawQAUidniAHmMFmkAEoPYIARXGBI2wXctWOlHAEDKznoAE8OABJd5ULAQAz8LK0TQoFbAla3SxWECEWi4BIILogGAQeg4XQgABWCloSCouEY4QUmhsuhgaH4ossQA?clientId=icc"
+                             onclick="selectColor(this,'exterior')"></div>
+                        <div class="cfg-swatch"
+                             style="background:#1e2a4a;"
+                             data-name="Dark Blue Metallic" data-price="221600"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQFV6AIwwBZNGAYciCKylDEqJZU-IgAFvhQSKggbBwAIgCCAJrBoQThzFEgCuKsAK5gLiluIAAaGQBCGRkAjLlK+RGgkLCIpCAtGcEtDQASwwDiABzDAHIAzMMAKotUAEwAaqsg8wBi7sHzWQDswQAsAKIAbOcA0gCs5wAyN1T3Z7PB97UAwsEAnFcAAy7AEZcZUDK3YITFoALWCACkzq8QE8Jks0gAlJ7BACKLQm+K2wXctVOlHAEDKznoAE8OABJT5ULAQAz8LK0TQoNZAtb3SxWECEWi4BIILogGAQeg4XQgABWCloSCouEY4QUmhsuhgaH4ossQA?clientId=icc"
+                             onclick="selectColor(this,'exterior')"></div>
+                        <div class="cfg-swatch"
+                             style="background:#8ab4c8;"
+                             data-name="Ice Grey Blue Metallic" data-price="221600"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQFV6AIwwBZNGAYciCKylDEqJZU-IgAFvhQSKggbBwAIgCCAJrBoQThzFEgCuKsAK5gLiluIAAaGQBCGRkAjLlK+RGgkLCIpCAtDQASwS0A4gAcowByAMyjACrzVABMAGrLILMAYu7Bs1kA7MEALACiAGynANIArKcAMldUtyfTwbe1AMLBAJwXAAZtn8MiMqBlrsE0gDgmMWgAtYIAKROzxADzGCzSACUHsEAIrjAkbYLuWrHSjgCBlZz0ACeHAAku8qFgIAZ+FlaJoUCsAStbpYrCBCLRcAkEF0QDAIPQcLoQAArBS0JBUXCMcIKTQ2XQwND8UWWIA?clientId=icc"
+                             onclick="selectColor(this,'exterior')"></div>
+                    </div>
+
+                    <!-- Legends Colours -->
+                    <div class="cfg-sub-label">Legends
+                        <span style="font-weight:400;color:#777;font-size:12.5px;"> &nbsp;INR 4,20,700</span>
+                        &nbsp;<i class="fas fa-info-circle" style="color:#bbb;font-size:11px;"></i>
+                    </div>
+                    <div class="cfg-swatches">
+                        <div class="cfg-swatch"
+                             style="background:#2d4a2a;"
+                             data-name="Forest Green Metallic" data-price="420700"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQFV6AIwwBZNGAYciCKylDEqJZU-IgAFvhQSKggbBwAIgCCAJrBoQThzFEgCuKsAK5gLiluIAAaGQBCGRkAjLlK+RGgkLCIpCAtDQASwS0A4gAcowByAMyjACrzVABMAGrLILMAYu7Bs1kA7MEALACiAGynANIArKcAMldUtyfTwbe1AMLBAJwXAAZtn8MiMqBlrsExi0AFrBABSJ2eIAeYwWaQASg9gtMTsEAIrjAkbYLuWrHSjgCBlZz0ACeHAAku8qFgIAZ+FlaJoUCsAStbpYrCBCLRcAkEF0QDAIPQcLoQAArBS0JBUXCMcIKTQ2XQwND8UWWIA?clientId=icc"
+                             onclick="selectColor(this,'exterior')"></div>
+                        <div class="cfg-swatch"
+                             style="background:#5a6a54;"
+                             data-name="Olive Silk Metallic" data-price="420700"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQFV6AIwwBZNGAYciCKylDEqJZU-IgAFvhQSKggbBwAIgCCAJrBoQThzFEgCuKsAK5gLiluIAAaGQBCGRkAjLlK+RGgkLCIpCAtDQASwS0A4gAcowByAMyjACrzVABMAGrLILMAYu7Bs1kA7MEALACiAGynANIArKcAMldUtyfTwbe1AMLBAJwXAAZtn8MiMqBlrsExi0AFrBABSJ2eIAeYwWaQASg9ggBFca4jbBdwnIm1Y6UcAQMrOegATw4AEl3lQsBADPwsrRNCgVgCVrdLFYQIRaLgEgguiAYBB6DhdCAAFYKWhIKi4RjhBSaGy6GBofgiyxAA?clientId=icc"
+                             onclick="selectColor(this,'exterior')"></div>
+                        <div class="cfg-swatch"
+                             style="background:#3a4a40;"
+                             data-name="Slate Grey Metallic" data-price="420700"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjFwgqEAA74izEADc09OBlnIQrWoQDWuRSAC+5qrShq44qHSi6W7PQFV6AIwwBZNGAYciCKylDEqJZU-IgAFvhQSKggbBwAIgCCAJrBoQThzFEgCuKsAK5gLiluIAAaGQBCGRkAjLlK+RGgkLCIpCAtDQASwS0A4gAcowByAMyjACrzVABMvsErAGrLILMAYu7Bs1kA7MEALACiAGwXANIArBcAMrdUD+fTwQ+1AMLBAE5rgAGPaAjIjKgZO7BMYtABawQAUuc3iBnmMFmkAErPYIARXGBO2wXctTOlHAEDKznoAE8OABJL5ULAQAz8LK0TQoFbAlYPSxWECEWi4BIILogGAQeg4XQgABWCloSCouEY4QUmhsuhgaH4ossQA?clientId=icc"
+                             onclick="selectColor(this,'exterior')"></div>
+                    </div>
+
+                    <!-- Paint to Sample -->
+                    <div class="cfg-sub-label" style="margin-top:20px;">Paint to Sample</div>
+                    <div class="cfg-pts-row" onclick="selectColor(this,'pts')">
+                        <div class="cfg-pts-swatch"></div>
+                        <div class="cfg-pts-info">
+                            <div class="cfg-pts-brand">Exclusive Manufaktur</div>
+                            <div class="cfg-pts-name">Paint to Sample
+                                &nbsp;<i class="fas fa-info-circle" style="color:#bbb;font-size:11px;"></i>
+                            </div>
+                            <div class="cfg-pts-price">INR 14,09,200</div>
+                        </div>
+                        <i class="fas fa-chevron-down cfg-pts-chevron"></i>
+                    </div>
+
+                </div><!-- /body-exterior -->
+            </div>
+
+            <!-- SECTION 2: WHEELS -->
+            <div class="cfg-section-block" id="block-wheels">
+                <div class="cfg-section-head" onclick="toggleSection('body-wheels', this)">
+                    <i class="fas fa-chevron-up"></i>
+                    <h3>Wheels</h3>
+                </div>
+                <div class="cfg-section-body" id="body-wheels">
+
+                    <!-- 20-inch -->
+                    <div class="cfg-wheel-size-head">20-inch</div>
+                    <div class="cfg-sub-note">20-inch Macan Wheels &nbsp;<i class="fas fa-info-circle"></i></div>
+                    <div class="cfg-std-label">Standard Equipment</div>
+                    <div class="cfg-wheels-row">
+                        <div class="cfg-wheel-opt active"
+                             data-price="0" data-size="20"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjD5CAFrVr8QVCAAd8RZiABuaenAy4OrWoQDWudSAC+NqrSg644qHSjHUINhwCq9ACMMAFk0MAwVEHVNKGJUOyp+RDl8KCQvH2QQABEAQQBNSOiCWOYEkDVxVgBXME8WdiyADVyAIVzcgEYijRK40EhYRFIQAAYARUjO1oAJKYBxAA4pgDkAZimAFQ2qACYANR2QNYAxX0i1-IB2SIAWAFEANjuAaQBWO4AZZ6o325XIm8mgBhSIATkeoxO4NycyouRekXmnQAWpEAFK3H4gT7zTbZABKn0i4068xJh0iviaN0o4Ag1Q89AAnhwAJIAqhYCCmfj5Wj6FC7Ua7N52ewgQi0XCpBD9EAwCD0HCeEAAKzUtCQVFwjFian0jk8MDQ-CldiAA?clientId=icc"
+                             onclick="selectWheel(this)">
+                            <div class="cfg-wheel-img-wrap">
+                                <img src="https://configurator.porsche.com/assets/2025/XABAA1/studio_54N.jpg?h=b2e13fc43dd88ceecc157e54475d5630" alt="20in Standard"
+                                     onerror="this.parentElement.innerHTML=svgWheel(5,'#555')">
+                            </div>
+                            <div class="cfg-wheel-opt-name">Standard</div>
+                        </div>
+                        <div class="cfg-wheel-opt"
+                             data-price="166200" data-size="20"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjD5CAFrVr8QVCAAd8RZiABuaenAy4OrWoQDWudSAC+NqrSg644qHSjHUINhwCq9ACMMAFk0MAwVEHVNKGJUOyp+RDl8KCQvH2QQABEAQQBNSOiCWOYEkDVxVgBXME8WdiyADVyAIVzcgEYijRK40EhYRFIQAAYARUjO1oAJKYBxAA4pgDkAZimAFQ2qACYANR2QNYAxX0i1-IB2SIAWAFEANjuAaQBWO4AZZ6o324AFSJvJoAYUiAE5HqMThDcnMqLkXpF5p0AFqRABStx+IE+8022QASp9IuNOvNSYdIr4mjdKOAINUPPQAJ4cACSK0iWAgpn4+Vo+hQu1GuzednsIEItFwqQQ-RAMAg9BwnhAACs1LQkFRcIxYmp9I5PDA0PxpXYgA?clientId=icc"
+                             onclick="selectWheel(this)">
+                            <div class="cfg-wheel-img-wrap">
+                                <img src="https://configurator.porsche.com/assets/2025/XABAA1/studio_54P.jpg?h=c77dcae9632b4d2d499880dda45dce63" alt="20in S Design"
+                                     onerror="this.parentElement.innerHTML=svgWheel(7,'#444')">
+                            </div>
+                            <div class="cfg-wheel-opt-name">Macan S Design</div>
+                        </div>
+                    </div>
+
+                    <!-- 21-inch -->
+                    <div class="cfg-wheel-size-head" style="margin-top:18px;">21-inch</div>
+                    <div class="cfg-wheels-row">
+                        <div class="cfg-wheel-opt"
+                             data-price="207500" data-size="21"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjD5CAFrVr8QVCAAd8RZiABuaenAy4OrWoQDWudSAC+NqrSg644qHSjHUINhwCq9ACMMAFk0MAwVEHVNKGJUOyp+RDl8KCQvH2QQABEAQQBNSOiCWOYEkDVxVgBXME8WdiyADVyAIVzcgEYijRK40EhYRFIQAAYARUjO1oAJKYBxAA4pgDkAZimAFQ2qACYANR2QNYAxX0i1-IB2SIAWAFEANjuAaQBWO4AZZ6o3poBhSIATkeoxOwNycyouRekX+8w+VHmnQAWpFPvNNtkAEqfSLjTrzfGHSK+Jo3SjgCDVDz0ACeHAAkitIlgIKZ+PlaPoULtRrs3nZ7CBCLRcKkEP0QDAIPQcJ4QAArNS0JBUXCMWJqfSOTwwND8UV2IA?clientId=icc"
+                             onclick="selectWheel(this)">
+                            <div class="cfg-wheel-img-wrap">
+                                <img src="https://configurator.porsche.com/assets/2025/XABAA1/studio_CG5.jpg?h=25b4e524d6842e95b19aa7912feb9795" alt="21in Sport"
+                                     onerror="this.parentElement.innerHTML=svgWheel(5,'#333')">
+                            </div>
+                            <div class="cfg-wheel-opt-name">Sport Design</div>
+                        </div>
+                        <div class="cfg-wheel-opt"
+                             data-price="249000" data-size="21"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjD5CAFrVr8QVCAAd8RZiABuaenAy4OrWoQDWudSAC+NqrSg644qHSjHUINhwCq9ACMMAFk0MAwVEHVNKGJUOyp+RDl8KCQvH2QQABEAQQBNSOiCWOYEkDVxVgBXME8WdiyADVyAIVzcgEYijRK40EhYRFIQAAYARUjO1oAJKYBxAA4pgDkAZimAFQ2qACYANR2QNYAxX0i1-IB2SIAWAFEANjuAaQBWO4AZZ6o324AlSJvJoAYUiAE5HqMThDcnMqLkXpF5p0AFqRT7zTbZf6fSLjTrzfGHSK+Jo3SjgCDVDz0ACeHAAkitIlgIKZ+PlaPoULtRrs3nZ7CBCLRcKkEP0QDAIPQcJ4QAArNS0JBUXCMWJqfSOTwwND8UV2IA?clientId=icc"
+                             onclick="selectWheel(this)">
+                            <div class="cfg-wheel-img-wrap">
+                                <img src="https://configurator.porsche.com/assets/2025/XABAA1/studio_54R.jpg?h=3398b96bc6838bea319a54973c34b2f4" alt="21in RS Spyder"
+                                     onerror="this.parentElement.innerHTML=svgWheel(10,'#2a2a2a')">
+                            </div>
+                            <div class="cfg-wheel-opt-name">RS Spyder Design</div>
+                        </div>
+                        <div class="cfg-wheel-opt"
+                             data-price="275000" data-size="21"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjD5CAFrVr8QVCAAd8RZiABuaenAy4OrWoQDWudSAC+NqrSg644qHSjHUINhwCq9ACMMAFk0MAwVEHVNKGJUOyp+RDl8KCQvH2QQABEAQQBNSOiCWOYEkDVxVgBXME8WdiyADVyAIVzcgEYijRK40EhYRFIQAAYARUjO1oAJKYBxAA4pgDkAZimAFQ2qACYANR2QNYAxX0i1-IB2SIAWAFEANjuAaQBWO4AZZ6o328nfk0AMKRACcj1GJzBuTmVFyL0i806AC1Ip95ptsgAlT6RcadeZ4w6RXxNG6UcAQaoeegATw4AEkVpEsBBTPx8rR9ChdqNdm87PYQIRaLhUgh+iAYBB6DhPCAAFZqWhIKi4RixNT6RyeGBofgiuxAA?clientId=icc"
+                             onclick="selectWheel(this)">
+                            <div class="cfg-wheel-img-wrap">
+                                <img src="https://configurator.porsche.com/assets/2025/XABAA1/studio_54Q.jpg?h=49930adf81138ffaa29dc211465a2849" alt="21in Turbo"
+                                     onerror="this.parentElement.innerHTML=svgWheel(8,'#1a1a1a')">
+                            </div>
+                            <div class="cfg-wheel-opt-name">Turbo Design</div>
+                        </div>
+                    </div>
+
+                    <!-- 22-inch -->
+                    <div class="cfg-wheel-size-head" style="margin-top:18px;">22-inch</div>
+                    <div class="cfg-wheels-row">
+                        <div class="cfg-wheel-opt"
+                             data-price="345000" data-size="22"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjD5CAFrVr8QVCAAd8RZiABuaenAy4OrWoQDWudSAC+NqrSg644qHSjHUINhwCq9ACMMAFk0MAwVEHVNKGJUOyp+RDl8KCQvH2QQABEAQQBNSOiCWOYEkDVxVgBXME8WdiyADVyAIVzcgEYijRK40EhYRFIQAAYARUjO1oAJKYBxAA4pgDkAZimAFQ2qACYANR2QNYAxX0i1-IB2SIAWAFEANjuAaQBWO4AZZ6o3poBhSIATkeoxOwNycyouRekX+V0+kXmnQAWpFPvNNtkAEqIqjjTrzSLjQ4gSjgCDVDz0ACeHAAkitIlgIKZ+PlaPoULtRrs3nZ7CBCLRcKkEP0QDAIPQcJ4QAArNS0JBUXCMWJqfSOTwwND8YV2IA?clientId=icc"
+                             onclick="selectWheel(this)">
+                            <div class="cfg-wheel-img-wrap">
+                                <img src="https://configurator.porsche.com/assets/2025/XABAA1/studio_C7L.jpg?h=d05f7a8fc6787adac407db0d7ed9f5fe" alt="22in Exclusive"
+                                     onerror="this.parentElement.innerHTML=svgWheel(6,'#888')">
+                            </div>
+                            <div class="cfg-wheel-opt-name">Exclusive Design</div>
+                        </div>
+                        <div class="cfg-wheel-opt"
+                             data-price="368000" data-size="22"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjD5CAFrVr8QVCAAd8RZiABuaenAy4OrWoQDWudSAC+NqrSg644qHSjHUINhwCq9ACMMAFk0MAwVEHVNKGJUOyp+RDl8KCQvH2QQABEAQQBNSOiCWOYEkDVxVgBXME8WdiyADVyAIVzcgEYijRK40EhYRFIQAAYARUjO1oAJKYBxAA4pgDkAZimAFQ2qACYANR2QNYAxX0i1-IB2SIAWAFEANjuAaQBWO4AZZ6o324BlSJvJoAYUiAE5HqMThDcnMqLkXpF5p0AFqRT7zTbZABKn0i4068wJh0iviaN0o4Ag1Q89AAnhwAJIrSJYCCmfj5Wj6FC7Ua7N52ewgQi0XCpBD9EAwCD0HCeEAAKzUtCQVFwjFian0jk8MDQ-DFdiAA?clientId=icc"
+                             onclick="selectWheel(this)">
+                            <div class="cfg-wheel-img-wrap">
+                                <img src="https://configurator.porsche.com/assets/2025/XABAA1/studio_54S.jpg?h=378c80d75836f69d523e696480354bf5" alt="22in GT Silver"
+                                     onerror="this.parentElement.innerHTML=svgWheel(9,'#777')">
+                            </div>
+                            <div class="cfg-wheel-opt-name">GT Silver</div>
+                        </div>
+                        <div class="cfg-wheel-opt"
+                             data-price="395000" data-size="22"
+                             data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjD5CAFrVr8QVCAAd8RZiABuaenAy4OrWoQDWudSAC+NqrSg644qHSjHUINhwCq9ACMMAFk0MAwVEHVNKGJUOyp+RDl8KCQvH2QQABEAQQBNSOiCWOYEkDVxVgBXME8WdiyADVyAIVzcgEYijRK40EhYRFIQAAYARUjO1oAJKYBxAA4pgDkAZimAFQ2qACYANR2QNYAxX0i1-IB2SIAWAFEANjuAaQBWO4AZZ6o3xbnfk0AMKRACcj1GJzBuQBIFyL0i806AC1Ip95ptsgAlT6RcadeZ4w6RXxNG6UcAQaoeegATw4AEkVpEsBBTPx8rR9ChdqNdm87PYQIRaLhUgh+iAYBB6DhPCAAFZqWhIKi4RixNT6RyeGBofgiuxAA?clientId=icc"
+                             onclick="selectWheel(this)">
+                            <div class="cfg-wheel-img-wrap">
+                                <img src="https://configurator.porsche.com/assets/2025/XABAA1/studio_58H.jpg?h=0a20b0361ab8501f6d0d818002c9762a" alt="22in Platinum"
+                                     onerror="this.parentElement.innerHTML=svgWheel(7,'#666')">
+                            </div>
+                            <div class="cfg-wheel-opt-name">Platinum Satin</div>
+                        </div>
+                    </div>
+
+                    <!-- Additional wheel options bottom — shown collapsed below main section -->
+                    <div style="margin-top:6px;border-top:1px solid #eee;padding-top:6px;">
+                        <div class="cfg-wheels-row">
+                            <div class="cfg-wheel-opt"
+                                 data-price="420000" data-size="22"
+                                 data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRFoA9cBaAGwgB3XjHrQ+-WjD5CAFrVr8QVCAAd8RZiABuaenAy4OrWoQDWudSAC+NqrSg644qHSjHUINhwCq9ACMMAFk0MAwVEHVNKGJUOyp+RDl8KCQvH2QQABEAQQBNSOiCWOYEkDVxVgBXME8WdiyADVyAIVzcgEYijRK40EhYRFIQAAYARUjO1oAJKYBxAA4pgDkAZimAFQ2qACYANR2QNYAxX0i1-IB2SIAWAFEANjuAaQBWO4AZZ6o3283Im8mgBhSIATkeoxO4NycyouRekXmnQAWpFPvNNtkAEqfSLjTrzfGHSK+Jo3SjgCDVDz0ACeHAAkitIlgIKZ+PlaPoULtRrs3nZ7CBCLRcKkEP0QDAIPQcJ4QAArNS0JBUXCMWJqfSOTwwND8UV2IA?clientId=icc"
+                                 onclick="selectWheel(this)">
+                                <div class="cfg-wheel-img-wrap">
+                                    <img src="https://configurator.porsche.com/assets/2025/XABAA1/studio_54T.jpg?h=1297b4dbd85f9d6d5d7f22ae3731834d" alt="22in Extra"
+                                         onerror="this.parentElement.innerHTML=svgWheel(5,'#4a4a4a')">
+                                </div>
+                                <div class="cfg-wheel-opt-name">GT Design S</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /body-wheels -->
+            </div>
+
+            <!-- Wheel Colours (collapsed row) -->
+            <div class="cfg-collapsed-row" onclick="toggleCollapsed(this)">
+                <i class="fas fa-chevron-down"></i>
+                <span>Wheel Colours</span>
+            </div>
+
+            <!-- Wheel Accessories (collapsed row) -->
+            <div class="cfg-collapsed-row" onclick="toggleCollapsed(this)">
+                <i class="fas fa-chevron-down"></i>
+                <span>Wheel Accessories</span>
+            </div>
+
+            <!-- Tyres (collapsed row with badge "1") -->
+            <div class="cfg-collapsed-row" onclick="toggleCollapsed(this)">
+                <i class="fas fa-chevron-down"></i>
+                <span>Tyres</span>
+            </div>
+
+            <!-- SECTION 3: INTERIOR COLOURS & MATERIALS -->
+            <div class="cfg-section-block" id="block-interior">
+                <div class="cfg-section-head" onclick="toggleSection('body-interior', this)">
+                    <i class="fas fa-chevron-up"></i>
+                    <h3>Interior Colours &amp; Materials</h3>
+                </div>
+    <div class="cfg-section-body" id="body-interior">
+
+        <div class="cfg-sub-label">Standard</div>
+        <div class="cfg-sub-note">Standard Interior in Black &nbsp;<i class="fas fa-info-circle"></i></div>
+        <div style="font-size:12.5px;color:#555;margin-bottom:10px;">INR 0</div>
+        <div class="cfg-interior-swatches">
+            <div class="cfg-interior-swatch active"
+                 style="background:#1c1c1c;"
+                 data-name="Black Standard" data-price="0"
+                 data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFoZ7ovVmkIALAEYQ09dlQgAHfEWYgAbtLgZcHVrUIBrXApABfE1VpRVcAVDrcVbDgFV64jAFk0YDCDmKCKGJUMyoAG0RRfCgkVE52ZBAAEQBBAE0-EAUlIOZQkHkBVgBXMG04p0SADRSAIRSUgEZM7MDg0EhYRFIQRtqACUzGgHEADiGAOQBmIYAVGaoAJgA1BZApgDFnTKm0gHZMgBYAUQA2I4BpAFYjgBlzqivDicyrqoBhTIBOU4AGDe+KUGVBSF0yG1+mWGjQAWpkAFKHB4gW7DWZJABKt0yAEURrjVplnFUDpRwBBitx6ABPDgASReVCwEF0YTStGkKEWv0WVzM5hAhFouGiCHaIBgEHoOHKIAAVvJaEgqLhGEF5NJLOUYGgwkKzEA?clientId=icc"
+                 onclick="selectInterior(this)">
+                <img src="https://configurator.porsche.com/assets/interiors/studio_AK.jpg?h=d96f5112082e5366ba6bcd0739d57284" alt="Black Standard" onerror="this.remove();" style="width:100%; height:100%; object-fit:cover; pointer-events:none;">
+            </div>
+            <div class="cfg-interior-swatch"
+                 style="background:#c8b898;"
+                 data-name="Beige Standard" data-price="0"
+                 data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFoZ7ovVmkIALAEYQ09dlQgAHfEWYgAbtLgZcHVrUIBrXApABfE1VpRVcAVDrcVbDgFV64jAFk0YDCDmKCKGJUMyoAG0RRfCgkVE52ZBAAEQBBAE0-EAUlIOZQkHkBVgBXMG04p0SADRSAIRSUgEZM7MDg0EhYRFIQRtqACUzGgHEADiGAOQBmIYAVGaoAJgA1BZApgDFnTKm0gHZMgBYAUQA2I4BpAFYjgBlzqivDicyrqoBhTIBOU4AGDe+KUGVA2v0yw0aAC1MgApQ4PEAw26ZW7DWZJABKyKoAEURpkcatMs4qgdKOAIMVuPQAJ4cACSLyoWAgujCaVo0hQi1+iyuZnMIEItFw0QQ7RAMAg9Bw5RAACt5LQkFRcIwgvJpJZyjA0GFhWYgA?clientId=icc"
+                 onclick="selectInterior(this)">
+                <img src="https://configurator.porsche.com/assets/interiors/studio_JL.jpg?h=047c6fd74bda0845060b95f16cf40668" alt="Beige Standard" onerror="this.remove();" style="width:100%; height:100%; object-fit:cover; pointer-events:none;">
+            </div>
+        </div>
+
+        <div class="cfg-sub-label" style="margin-top:20px;">Leather package</div>
+        <div class="cfg-sub-note">
+            Leather Package in Black/Bordeaux Red &nbsp;<i class="fas fa-info-circle"></i>
+        </div>
+        <div style="font-size:12.5px;color:#555;margin-bottom:10px;">INR 2,58,000</div>
+        <div class="cfg-interior-swatches">
+            <div class="cfg-interior-swatch"
+                 style="background:#141414;"
+                 data-name="Black Leather" data-price="258000"
+                 data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFoZ7ovVmkIALAEYQ09dlQgAHfEWYgAbtLgZcHVrUIBrXApABfE1VpRVcAVDrcVbDgFV64jAFk0YDCDmKCKGJUMyoAG0RRfCgkVE52ZBAAEQBBAE0-EAUlIOZQkHkBVgBXMG04p0SADRSAIRSUgEZM7MDg0EhYRFIQRtqACUzGgHEADiGAOQBmIYAVGaoAJgA1BZApgDFnTKm0gHZMgBYAUQA2I4BpAFYjgBlzqivDicyrqoBhTIBOU4AGDe+KUGVA2v0yw0aAC1MgApQ4PEC3YazJIAJVumQACrVMgBFEZ41aZZxVA6UcAQYrcegATw4AEkXlQsBBdGE0rRpChFr9FlczOYQIRaLhogh2iAYBB6DhyiAAFbyWhIKi4RhBeTSSzlGBoMLCsxAA?clientId=icc"
+                 onclick="selectInterior(this)">
+                <img src="https://configurator.porsche.com/assets/interiors/studio_PB.jpg?h=57717864fbb2c9abbcbe461d11ef85db" alt="Black Leather" onerror="this.remove();" style="width:100%; height:100%; object-fit:cover; pointer-events:none;">
+            </div>
+            <div class="cfg-interior-swatch"
+                 style="background:#c8c0b2;"
+                 data-name="Chalk Leather" data-price="258000"
+                 data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFoZ7ovVmkIALAEYQ09dlQgAHfEWYgAbtLgZcHVrUIBrXApABfE1VpRVcAVDrcVbDgFV64jAFk0YDCDmKCKGJUMyoAG0RRfCgkVE52ZBAAEQBBAE0-EAUlIOZQkHkBVgBXMG04p0SADRSAIRSUgEZM7MDg0EhYRFIQRtqACUzGgHEADiGAOQBmIYAVGaoAJgA1BZApgDFnTKm0gHZMgBYAUQA2I4BpAFYjgBlzqivDicyrqoBhTIBOU4AGDe+KUGVA2v0yw0aAC1MgApQ4PEC3YazJIAJVumQACgB5TIARRG+NWmWcVQOlHAEGK3HoAE8OABJF5ULAQXRhNK0aQoRa-RZXMzmECEWi4aIIdogGAQeg4cogABW8loSCouEYQXk0ks5RgaDCIrMQA?clientId=icc"
+                 onclick="selectInterior(this)">
+                <img src="https://configurator.porsche.com/assets/interiors/studio_PO.jpg?h=c5d6a7021d694031e21882dc4aa2c462" alt="Chalk Leather" onerror="this.remove();" style="width:100%; height:100%; object-fit:cover; pointer-events:none;">
+            </div>
+            <div class="cfg-interior-swatch"
+                 style="background:#2c3c2c;"
+                 data-name="Slate Green Leather" data-price="258000"
+                 data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFoZ7ovVmkIALAEYQ09dlQgAHfEWYgAbtLgZcHVrUIBrXApABfE1VpRVcAVDrcVbDgFV64jAFk0YDCDmKCKGJUMyoAG0RRfCgkVE52ZBAAEQBBAE0-EAUlIOZQkHkBVgBXMG04p0SADRSAIRSUgEZM7MDg0EhYRFIQAAYARUzG2oAJIYBxAA4hgDkAZiGAFQWqACYANRWQOYAxZ0y5tIB2TIAWAFEANjOAaQBWM4AZa6o705nMu6qAYUyATkuvR2-xSYyo40aAC1MgApU4vECPcaLJIAJUemQACuNMv1GjiqP1NplnFUTpRwBBitx6ABPDgASQ+VCwEF0YTStGkKFWvVWdzM5hAhFouGiCHaIBgEHoOHKIAAVvJaEgqLhGEF5NJLOUYGgwiKzEA?clientId=icc"
+                 onclick="selectInterior(this)">
+                <img src="https://configurator.porsche.com/assets/interiors/studio_PG.jpg?h=fed33f20599ccc00a2f1abfc6a4c4978" alt="Slate Green Leather" onerror="this.remove();" style="width:100%; height:100%; object-fit:cover; pointer-events:none;">
+            </div>
+            <div class="cfg-interior-swatch"
+                 style="background:linear-gradient(135deg,#141414 50%,#6b1a28 50%);"
+                 data-name="Black/Bordeaux Red Leather" data-price="258000"
+                 data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFoZ7ovVmkIALAEYQ09dlQgAHfEWYgAbtLgZcHVrUIBrXApABfE1VpRVcAVDrcVbDgFV64jAFk0YDCDmKCKGJUMyoAG0RRfCgkVE52ZBAAEQBBAE0-EAUlIOZQkHkBVgBXMG04p0SADRSAIRSUgEZM7MDg0EhYRFIQAAYARUzG2oAJIYBxAA4hgDkAZiGAFQWqACYANRWQOYAxZ0y5tIB2TIAWAFEANjOAaQBWM4AZa6o705nMu6qAYUyATkuvR2-xSYyo40aAC1MgApU4vECPcaLJIAJUemQACsCqP1GuNMv1NplnFUTpRwBBitx6ABPDgASQ+VCwEF0YTStGkKFWvVWdzM5hAhFouGiCHaIBgEHoOHKIAAVvJaEgqLhGEF5NJLOUYGgwiKzEA?clientId=icc"
+                 onclick="selectInterior(this)">
+                <img src="https://configurator.porsche.com/assets/interiors/studio_PF.jpg?h=cba4762ff60add50cc5287c5dfd8d079" alt="Black/Bordeaux Red Leather" onerror="this.remove();" style="width:100%; height:100%; object-fit:cover; pointer-events:none;">
+            </div>
+            <div class="cfg-interior-swatch"
+                 style="background:#2e2e3e;"
+                 data-name="Night Blue Leather" data-price="258000"
+                 data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFoZ7ovVmkIALAEYQ09dlQgAHfEWYgAbtLgZcHVrUIBrXApABfE1VpRVcAVDrcVbDgFV64jAFk0YDCDmKCKGJUMyoAG0RRfCgkVE52ZBAAEQBBAE0-EAUlIOZQkHkBVgBXMG04p0SADRSAIRSUgEZM7MDg0EhYRFIQAAYARUzG2oAJIYBxAA4hgDkAZiGAFQWqACYANRWQOYAxZ0y5tIB2TIAWAFEANjOAaQBWM4AZa6o705nMu6qAYUyATkuvR2-xSYyo40aAC1MgApU4vECPcaLJIAJUemQACqjMv1GuNcZtMs4qidKOAIMVuPQAJ4cACSHyoWAgujCaVo0hQq16qzuZnMIEItFw0QQ7RAMAg9Bw5RAACt5LQkFRcIwgvJpJZyjA0GFhWYgA?clientId=icc"
+                 onclick="selectInterior(this)">
+                <img src="https://configurator.porsche.com/assets/interiors/studio_PR.jpg?h=e524a3da6e32c654e1f4dd075a698c84" alt="Night Blue Leather" onerror="this.remove();" style="width:100%; height:100%; object-fit:cover; pointer-events:none;">
+            </div>
+        </div>
+
+        <div class="cfg-sub-label" style="margin-top:20px;">Leather package with extensive items in leather</div>
+        <div class="cfg-interior-swatches">
+            <div class="cfg-interior-swatch"
+                 style="background:#161616;"
+                 data-name="Black Full Leather" data-price="414000"
+                 data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFoZ7ovVmkIALAEYQ09dlQgAHfEWYgAbtLgZcHVrUIBrXApABfE1VpRVcAVDrcVbDgFV64jAFk0YDCDmKCKGJUMyoAG0RRfCgkVE52ZBAAEQBBAE0-EAUlIOZQkHkBVgBXMG04p0SADRSAIRSUgEZM7MDg0EhYRFIQAAYARUzG2oAJIYBxAA4hgDkAZiGAFQWqACYANRWQOYAxZ0y5tIB2TIAWAFEANjOAaQBWM4AZa6o705nMu6qAYUyATkuvR2-xSYyoKQA6plxo0AFqZABSpxeIEe40WSQASo9Mv1VgjcZtMs4qidKOAIMVuPQAJ4cACSHyoWAgujCaVo0hQq16qzuZnMIEItFw0QQ7RAMAg9Bw5RAACt5LQkFRcIwgvJpJZyjA0GFhWYgA?clientId=icc"
+                 onclick="selectInterior(this)">
+                <img src="https://configurator.porsche.com/assets/interiors/studio_AW.jpg?h=ecbd391cc1c17cac7b23b91a6fb94597" alt="Black Full Leather" onerror="this.remove();" style="width:100%; height:100%; object-fit:cover; pointer-events:none;">
+            </div>
+            <div class="cfg-interior-swatch"
+                 style="background:#d4c4a2;"
+                 data-name="Sand Full Leather" data-price="414000"
+                 data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFoZ7ovVmkIALAEYQ09dlQgAHfEWYgAbtLgZcHVrUIBrXApABfE1VpRVcAVDrcVbDgFV64jAFk0YDCDmKCKGJUMyoAG0RRfCgkVE52ZBAAEQBBAE0-EAUlIOZQkHkBVgBXMG04p0SADRSAIRSUgEZM7MDg0EhYRFIQAAYARUzG2oAJIYBxAA4hgDkAZiGAFQWqACYANRWQOYAxZ0y5tIB2TIAWAFEANjOAaQBWM4AZa6o705nMu6qAYUyATkuvR2-xSYyotUemXGjQAWpkAFKnF4gR7jRZJABKkKo-VW8My-U2mWcVROlHAEGK3HoAE8OABJD5ULAQXRhNK0aQoVa9VZ3MzmECEWi4aIIdogGAQeg4cogABW8loSCouEYQXk0ks5RgaDCwrMQA?clientId=icc"
+                 onclick="selectInterior(this)">
+                <img src="https://configurator.porsche.com/assets/interiors/studio_BL.jpg?h=437f7700dfcb27de4158fdc4ae8e53e2" alt="Sand Full Leather" onerror="this.remove();" style="width:100%; height:100%; object-fit:cover; pointer-events:none;">
+            </div>
+            <div class="cfg-interior-swatch"
+                 style="background:#8c1a1a;"
+                 data-name="Carmine Red Full Leather" data-price="414000"
+                 data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFoZ7ovVmkIALAEYQ09dlQgAHfEWYgAbtLgZcHVrUIBrXApABfE1VpRVcAVDrcVbDgFV64jAFk0YDCDmKCKGJUMyoAG0RRfCgkVE52ZBAAEQBBAE0-EAUlIOZQkHkBVgBXMG04p0SADRSAIRSUgEZM7MDg0EhYRFIQAAYARUzG2oAJIYBxAA4hgDkAZiGAFQWqACYANRWQOYAxZ0y5tIB2TIAWAFEANjOAaQBWM4AZa6o705nMu6qAYUyATkuvR2-xSYyotWBVHGjQAWpkAFKnF4gR7jRZJABKj0y-VW8Jxm0yziqJ0o4AgxW49AAnhwAJIfKhYCC6MJpWjSFCrXqrO5mcwgQi0XDRBDtEAwCD0HDlEAAK3ktCQVFwjCC8mklnKMDQYSFZiAA?clientId=icc"
+                 onclick="selectInterior(this)">
+                <img src="https://configurator.porsche.com/assets/interiors/studio_BF.jpg?h=3e61d0649f89c20044fc397e2d455146)" alt="Carmine Red Full Leather" onerror="this.remove();" style="width:100%; height:100%; object-fit:cover; pointer-events:none;">
+            </div>
+        </div>
+
+        <div class="cfg-sub-label" style="margin-top:20px;">Club Leather</div>
+        <div class="cfg-interior-swatches">
+            <div class="cfg-interior-swatch"
+                 style="background:#2c1a0c;"
+                 data-name="Truffle Brown Club Leather" data-price="552000"
+                 data-img="https://prs.porsche.com/iod/image/IN/XABAA1/1/N4Igxg9gdgZglgcxALlAQynAtmgLnaAZxQG0BdAGnDSwFMAnNFUOAExRDilwFoZ7ovVmkIALAEYQ09dlQgAHfEWYgAbtLgZcHVrUIBrXApABfE1VpRVcAVDrcVbDgFV64jAFk0YDCDmKCKGJUMyoAG0RRfCgkVE52ZBAAEQBBAE0-EAUlIOZQkHkBVgBXMG04p0SADRSAIRSUgEZM7MDg0EhYRFIQAAYARUzG2oAJIYBxAA4hgDkAZiGAFQWqACYANRWQOYAxZ0y5tIB2TIAWAFEANjOAaQBWM4AZa6o705nMu6qAYUyATkuvR2-xSYyo40aAC1MiMPlQAFKnF4gR7jRZJABKj0y-VW8Jxm0yziqJ0o4AgxW49AAnhwAJJwkBYCC6MJpWjSFCrXqrO5mcwgQi0XDRBDtEAwCD0HDlEAAK3ktCQVFwjCC8mklnKMDQYSFZiAA?clientId=icc"
+                 onclick="selectInterior(this)">
+                <img src="https://configurator.porsche.com/assets/interiors/studio_HN.jpg?h=66b71dc1cb6ff94b0fc3617269d0b1fe" alt="Truffle Brown Club Leather" onerror="this.remove();" style="width:100%; height:100%; object-fit:cover; pointer-events:none;">
+            </div>
+        </div>
+
+    </div></div>
+
+            <!-- SECTION 4: TECHNOLOGY -->
+            <div class="cfg-section-block">
+                <div class="cfg-section-head" onclick="toggleSection('body-tech', this)">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Technology</h3>
+                </div>
+                <div class="cfg-section-body collapsed" id="body-tech">
+                    <div style="padding:8px 0 12px;font-size:13px;color:#777;">
+                        Powertrain &amp; Performance, Assistance systems, Comfort &amp; everyday usability, Infotainment, Charging &amp; Range, Charging accessories
+                    </div>
+                    <!-- Collapsed sub-rows shown from screenshot -->
+                    <div class="cfg-collapsed-row" onclick="toggleCollapsed(this)" style="margin:0 -22px;padding:14px 22px;">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Powertrain &amp; Performance</span>
+                        <span class="cfg-section-badge">3</span>
+                    </div>
+                    <div class="cfg-collapsed-row" onclick="toggleCollapsed(this)" style="margin:0 -22px;padding:14px 22px;">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Assistance systems</span>
+                    </div>
+                    <div class="cfg-collapsed-row" onclick="toggleCollapsed(this)" style="margin:0 -22px;padding:14px 22px;">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Comfort &amp; everyday usability</span>
+                        <span class="cfg-section-badge">4</span>
+                    </div>
+                    <div class="cfg-collapsed-row" onclick="toggleCollapsed(this)" style="margin:0 -22px;padding:14px 22px;">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Infotainment</span>
+                    </div>
+                    <div class="cfg-collapsed-row" onclick="toggleCollapsed(this)" style="margin:0 -22px;padding:14px 22px;">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Charging &amp; Range</span>
+                        <span class="cfg-section-badge">1</span>
+                    </div>
+                    <div class="cfg-collapsed-row" onclick="toggleCollapsed(this)" style="margin:0 -22px;padding:14px 22px;">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Charging accessories</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 5: VEHICLE ACCESSORIES -->
+            <div class="cfg-section-block">
+                <div class="cfg-section-head" onclick="toggleSection('body-acc', this)">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Vehicle accessories &nbsp;<i class="fas fa-info-circle" style="color:#bbb;font-size:13px;font-weight:400;"></i></h3>
+                </div>
+                <div class="cfg-section-body collapsed" id="body-acc">
+                    <div style="padding:8px 0 12px;">
+                        <div style="background:#f5f5f5;border-radius:6px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;font-size:12.5px;color:#555;">
+                            <i class="fas fa-info-circle" style="color:#777;margin-top:1px;flex-shrink:0;"></i>
+                            <span>Some accessories may require additional installation costs or additional equipment.</span>
+                        </div>
+                        <div class="cfg-collapsed-row" onclick="toggleCollapsed(this)" style="margin:12px -22px 0;padding:14px 22px;">
+                            <i class="fas fa-chevron-down"></i>
+                            <span>Transport &amp; protection</span>
+                        </div>
+                        <div class="cfg-collapsed-row" onclick="toggleCollapsed(this)" style="margin:0 -22px;padding:14px 22px;">
+                            <i class="fas fa-chevron-down"></i>
+                            <span>Interior accessories &amp; child seats</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 6: OPTIONAL PACKAGES -->
+            <div class="cfg-section-block">
+                <div class="cfg-section-head" onclick="toggleSection('body-packages', this)">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Optional Packages</h3>
+                </div>
+                <div class="cfg-section-body collapsed" id="body-packages">
+
+                    <div class="cfg-package" onclick="togglePackage(this)" data-price="325000">
+                        <div class="cfg-pkg-top">
+                            <div>
+                                <div class="cfg-pkg-name">Sport Chrono Package</div>
+                                <div class="cfg-pkg-price">INR 3,25,000</div>
+                            </div>
+                            <div class="cfg-pkg-check"><i class="fas fa-check"></i></div>
+                        </div>
+                        <div class="cfg-pkg-desc">PASM, Launch Control, sport modes including Sport+.</div>
+                    </div>
+
+                    <div class="cfg-package" onclick="togglePackage(this)" data-price="485000">
+                        <div class="cfg-pkg-top">
+                            <div>
+                                <div class="cfg-pkg-name">Bose Surround Sound System</div>
+                                <div class="cfg-pkg-price">INR 4,85,000</div>
+                            </div>
+                            <div class="cfg-pkg-check"><i class="fas fa-check"></i></div>
+                        </div>
+                        <div class="cfg-pkg-desc">14-speaker 710-watt premium audio with AudioPilot noise compensation.</div>
+                    </div>
+
+                    <div class="cfg-package" onclick="togglePackage(this)" data-price="210000">
+                        <div class="cfg-pkg-top">
+                            <div>
+                                <div class="cfg-pkg-name">Panoramic Roof System</div>
+                                <div class="cfg-pkg-price">INR 2,10,000</div>
+                            </div>
+                            <div class="cfg-pkg-check"><i class="fas fa-check"></i></div>
+                        </div>
+                        <div class="cfg-pkg-desc">Large panoramic fixed glass roof with solar-control glazing.</div>
+                    </div>
+
+                    <div class="cfg-package" onclick="togglePackage(this)" data-price="375000">
+                        <div class="cfg-pkg-top">
+                            <div>
+                                <div class="cfg-pkg-name">Porsche Ceramic Composite Brakes (PCCB)</div>
+                                <div class="cfg-pkg-price">INR 3,75,000</div>
+                            </div>
+                            <div class="cfg-pkg-check"><i class="fas fa-check"></i></div>
+                        </div>
+                        <div class="cfg-pkg-desc">Carbon-ceramic brake discs for maximum performance and fade resistance.</div>
+                    </div>
+
+                    <div class="cfg-package" onclick="togglePackage(this)" data-price="156000">
+                        <div class="cfg-pkg-top">
+                            <div>
+                                <div class="cfg-pkg-name">Ambient Lighting Package</div>
+                                <div class="cfg-pkg-price">INR 1,56,000</div>
+                            </div>
+                            <div class="cfg-pkg-check"><i class="fas fa-check"></i></div>
+                        </div>
+                        <div class="cfg-pkg-desc">Customisable interior ambient lighting with 10 colour options.</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Bottom padding -->
+            <div style="height:40px;"></div>
+
+        </div><!-- /cfg-options-scroll -->
+    </div><!-- /cfg-panel -->
+
+</div><!-- /cfg-body -->
+
+<!-- LIGHTBOX / FULLSCREEN -->
+<div class="cfg-lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="cfg-lightbox-close" onclick="event.stopPropagation();closeLightbox()">
+        <i class="fas fa-times"></i>
+    </button>
+    <img id="lightboxImg" src="" alt="Porsche Macan">
+</div>
+
+<!-- SUMMARY DRAWER -->
+<div class="cfg-summary-overlay" id="summaryOverlay" onclick="closeSummary()">
+    <div class="cfg-summary-drawer" onclick="event.stopPropagation()">
+        <div class="cfg-summary-title">
+            Configuration Summary
+            <button class="cfg-summary-close" onclick="closeSummary()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="summaryBody"></div>
+        <div class="cfg-summary-total">
+            <span class="cfg-summary-total-label">Total</span>
+            <span class="cfg-summary-total-val" id="summaryTotal">INR 1,21,62,000</span>
+        </div>
+        <button class="cfg-summary-cta" onclick="alert('Enquiry submitted to Porsche Centre!')">
+            Enquire about this vehicle
+        </button>
+    </div>
+</div>
+
+<script src="js/configurator.js"></script>
+
+</body>
+</html>
